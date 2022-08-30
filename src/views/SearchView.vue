@@ -58,10 +58,13 @@ export default {
   },
   methods: {
     search_button: function () {
-      this.items.forEach(function (item) {
-        console.log(Object.values(item))
-        console.log(this.searchWord)
+      let wordList = []
+      this.items.forEach((item) => {
+        if (Object.values(item).indexOf(this.searchWord) != -1) {
+          wordList.push(item)
+        }
       })
+      console.log(wordList)
     },
   },
 }
