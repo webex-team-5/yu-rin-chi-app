@@ -1,0 +1,69 @@
+<template>
+  <h1>アイスクリームチャート</h1>
+  <form id="Q">
+    <p>あなたの食べたい味は？？</p>
+    <input type="radio" name="q1" value="3" v-model="picked" />甘～い
+    <input type="radio" name="q1" value="2" v-model="picked" />すっきり
+    <input type="radio" name="q1" value="1" v-model="picked" />濃厚
+    <p>どんなアイスを食べてみたい？？</p>
+    <input
+      type="radio"
+      name="q2"
+      value="20"
+      v-model="wasted"
+    />定番！これは食べないと！安定のアイス
+    <input
+      type="radio"
+      name="q2"
+      value="10"
+      v-model="wasted"
+    />変わり種！ご当地限定おもしろアイス！
+    <input
+      type="radio"
+      name="q2"
+      value="1"
+      v-model="wasted"
+    />贅沢なおいしさ...オトナなあなたに食べてほしい至極のアイス
+  </form>
+  <button v-on:click="hyouzi">あなたにぴったりなアイスをチェック！</button>
+  <div>{{ text }}</div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      text: "",
+      picked: "",
+      wasted: "",
+    }
+  },
+  methods: {
+    hyouzi() {
+      let A = Number(this.picked) + Number(this.wasted)
+      if (A === 23) {
+        this.text = "あなたにぴったりなのは甘くて定番の味のこれです。"
+      } else if (A === 13) {
+        this.text = "あなたにぴったりなのは甘くてご当地限定のこれです。"
+      } else if (A === 4) {
+        this.text = "あなたにぴったりなのは甘くて贅沢な大人のためのアイスです。"
+      } else if (A === 22) {
+        this.text = "あなたにぴったりなのはすっきりした定番のアイスです"
+      } else if (A === 12) {
+        this.text = "あなたにぴったりなのはすっきりしたご当地限定のアイスです"
+      } else if (A === 3) {
+        this.text =
+          "あなたにぴったりなのはすっきりした、でもオトナのためのアイスです"
+      } else if (A === 21) {
+        this.text = "あなたにぴったりなのは濃厚な定番のアイスです"
+      } else if (A === 11) {
+        this.text = "あなたにぴったりなのは濃厚なご当地限定のアイスです"
+      } else if (A === 2) {
+        this.text = "あなたにぴったりなのは濃厚なオトナなアイスです"
+      }
+    },
+  },
+}
+</script>
+
+<style scoped></style>
