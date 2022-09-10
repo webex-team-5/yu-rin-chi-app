@@ -16,18 +16,14 @@
         step="50"
       /><label><br />¥{{ rangeBar }}以内</label>
     </form>
-    <div
-      id="check-container"
-      v-for="(taste, index) in tastes"
-      v-bind:key="index"
-    >
+    <div v-for="(taste, index) in tastes" v-bind:key="index">
       <input
-        id="checkbox"
+        v-bind:id="'checkbox' + index"
         type="checkbox"
         v-model="checkList"
         v-bind:value="taste"
       />
-      <label for="checkbox">{{ taste }}</label>
+      <label v-bind:for="'checkbox' + index">{{ taste }}</label>
     </div>
     <button id="search-button" v-on:click="searchButton">検索</button>
   </div>
@@ -147,18 +143,17 @@ export default {
         (element) => element.fee <= this.rangeBar
       )
       //チェックボックスから味を絞る
-      let llist = []
+      let newSearchedList = []
       console.log(this.checkList)
-      this.searchedList.forEach((item) => {
+      searchedList.forEach((item) => {
         this.checkList.forEach((check) => {
-          console.log(item)
-          console.log(check)
+          if (item.taste === check) {
+            newSearchedList.push(item)
+          }
         })
       })
-      console.log(llist)
-
       //表示
-      this.displayItems = llist
+      this.displayItems = newSearchedList
     },
   },
   mounted: function () {
