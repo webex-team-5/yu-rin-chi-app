@@ -6,7 +6,6 @@
       @input="searching"
       v-on:keydown.enter="searchButton"
     />
-    <button v-on:click="searchButton">検索</button>
     <form>
       <input
         type="range"
@@ -17,6 +16,20 @@
         step="50"
       /><label><br />¥{{ rangeBar }}以内</label>
     </form>
+    <div
+      id="check-container"
+      v-for="(taste, index) in tastes"
+      v-bind:key="index"
+    >
+      <input
+        id="checkbox"
+        type="checkbox"
+        v-model="checkList"
+        v-bind:value="taste"
+      />
+      <label for="checkbox">{{ taste }}</label>
+    </div>
+    <button id="search-button" v-on:click="searchButton">検索</button>
   </div>
   <div id="item-container">
     <div class="ice" v-for="(item, index) in displayItems" v-bind:key="index">
@@ -112,28 +125,49 @@ export default {
       searchWord: "",
       displayItems: "",
       rangeBar: 1000,
+      tastes: [],
+      checkList: [],
     }
   },
   methods: {
     searchButton: function () {
       let searchedList = []
+      //入力したワードから検索
       this.items.forEach((item) => {
         if (Object.values(item).indexOf(this.searchWord) != -1) {
           searchedList.push(item)
         }
       })
+      //検索ボックスの入力がない場合
       if (this.searchWord == "") {
         searchedList = this.items
       }
-
+      //料金のバーから絞る
       searchedList = searchedList.filter(
         (element) => element.fee <= this.rangeBar
       )
-      this.displayItems = searchedList
+      //チェックボックスから味を絞る
+      let llist = []
+      console.log(this.checkList)
+      this.searchedList.forEach((item) => {
+        this.checkList.forEach((check) => {
+          console.log(item)
+          console.log(check)
+        })
+      })
+      console.log(llist)
+
+      //表示
+      this.displayItems = llist
     },
   },
   mounted: function () {
     this.displayItems = this.items
+    //itemsオブジェクトのtasteをthis.tastesに代入
+    this.items.forEach((item) => {
+      this.tastes.push(item.taste)
+    })
+    this.tastes = new Set(this.tastes) //重複を消去
   },
 }
 </script>
@@ -152,5 +186,10 @@ img {
 .ice {
   display: flex;
   flex-direction: column;
+}
+#search-button {
+  width: 100px;
+  height: 50px;
+  margin: 30px;
 }
 </style>
