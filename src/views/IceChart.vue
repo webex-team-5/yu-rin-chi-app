@@ -1,54 +1,69 @@
 <template>
   <h1>アイスクリームチャート</h1>
-  <form id="Q">
-    <p>あなたの食べたい味は？？</p>
-    <input
-      type="radio"
-      name="q1"
-      value="3"
-      v-model="picked"
-      class="Radio-Input"
-    />
-    <span class="Radio-Text">甘～い</span>
-    <input
-      type="radio"
-      name="q1"
-      value="2"
-      v-model="picked"
-      class="Radio-Input"
-    /><span class="Radio-Text">すっきり</span>
-    <input
-      type="radio"
-      name="q1"
-      value="1"
-      v-model="picked"
-      class="Radio-Input"
-    /><span class="Radio-Text">濃厚</span>
-    <p>どんなアイスを食べてみたい？？</p>
-    <input
-      type="radio"
-      name="q2"
-      value="20"
-      v-model="wasted"
-      class="Radio-Input"
-    /><span class="Radio-Text">定番！みんなが好きな安定の味</span>
-    <input
-      type="radio"
-      name="q2"
-      value="10"
-      v-model="wasted"
-      class="Radio-Input"
-    /><span class="Radio-Text">変わり種！ご当地限定のアイス！</span>
-    <input
-      type="radio"
-      name="q2"
-      value="1"
-      v-model="wasted"
-      class="Radio-Input"
-    /><span class="Radio-Text"
-      >贅沢なおいしさ...オトナなあなたに食べてほしいアイス</span
-    >
-  </form>
+  <h4>あなたの食べたい味は？？</h4>
+  <div class="container">
+    <div class="circle">
+      <input
+        type="radio"
+        name="q1"
+        value="3"
+        v-model="picked"
+        class="Radio-Input"
+      />
+      <span class="Radio-Text">甘～い</span>
+    </div>
+    <div class="circle">
+      <input
+        type="radio"
+        name="q1"
+        value="2"
+        v-model="picked"
+        class="Radio-Input"
+      /><span class="Radio-Text">すっきり</span>
+    </div>
+    <div class="circle">
+      <input
+        type="radio"
+        name="q1"
+        value="1"
+        v-model="picked"
+        class="Radio-Input"
+      /><span class="Radio-Text">濃厚</span>
+    </div>
+  </div>
+
+  <h4>どんなアイスを食べてみたい？？</h4>
+  <div class="container">
+    <div class="circle">
+      <input
+        type="radio"
+        name="q2"
+        value="20"
+        v-model="wasted"
+        class="Radio-Input"
+      /><span class="Radio-Text">定番！<br />みんなが好きな安定の味</span>
+    </div>
+    <div class="circle">
+      <input
+        type="radio"
+        name="q2"
+        value="10"
+        v-model="wasted"
+        class="Radio-Input"
+      /><span class="Radio-Text">変わり種！<br />ご当地限定のアイス！</span>
+    </div>
+    <div class="circle">
+      <input
+        type="radio"
+        name="q2"
+        value="1"
+        v-model="wasted"
+        class="Radio-Input"
+      /><span class="Radio-Text"
+        >贅沢なおいしさ...<br />オトナなあなたに食べてほしいアイス</span
+      >
+    </div>
+  </div>
   <button v-on:click="hyouzi">あなたにぴったりなアイスをチェック！</button>
   <div>{{ text }}</div>
 </template>
@@ -139,5 +154,21 @@ export default {
   width: 10px;
   height: 10px;
   background-color: orange;
+}
+/*円の上に文字を乗せる*/
+.circle {
+  width: 300px;
+  height: 300px;
+  background-color: pink;
+  border-radius: 50%;
+  margin: 0 30px;
+}
+.container {
+  display: flex;
+  justify-content: center;
+}
+.Radio-Text span {
+  text-align: center;
+  line-height: center;
 }
 </style>
