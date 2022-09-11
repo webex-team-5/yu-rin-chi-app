@@ -22,6 +22,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/SearchView.vue"),
   },
+  {
+    path: "/iceChart",
+    name: "iceChart",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/IceChart.vue"),
+  },
 ]
 
 const router = createRouter({
