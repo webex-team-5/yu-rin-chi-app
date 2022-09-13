@@ -1,9 +1,8 @@
-import Vue from "vue"
+import { createApp } from "vue"
 import App from "./App.vue"
+import "./firebase.js"
+import router from "./router"
 
-Vue.prototype.$gm = window.google.maps
-
-Vue.config.productionTip = false
-new Vue({
-  render: (h) => h(App),
-}).$mount("#app")
+const app = createApp(App)
+app.config.globalProperties.$gm = window.google.maps
+app.use(router).mount("#app")
