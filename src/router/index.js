@@ -1,11 +1,17 @@
 import { createRouter, createWebHistory } from "vue-router"
-import HomeView from "../views/HomeView.vue"
+import HomeView from "@/views/HomeView.vue"
+import GoogleView from "@/views/GoogleView.vue"
 
 const routes = [
   {
     path: "/",
     name: "home",
     component: HomeView,
+  },
+  {
+    path: "/map",
+    name: "map",
+    component: GoogleView,
   },
   {
     path: "/about",
@@ -17,10 +23,8 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
   },
 ]
-
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 })
-
 export default router
