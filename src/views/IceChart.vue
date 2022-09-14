@@ -2,47 +2,34 @@
   <h1>アイスクリームチャート</h1>
   <div class="taste-container">
     <h4>あなたの食べたい味は？？</h4>
-    <button v-on:click="tasteButton($event1)">
-      {{ tastes[0] }}
-    </button>
-    <button v-on:click="tasteButton($event2)">
-      {{ tastes[1] }}
-    </button>
-    <button v-on:click="tasteButton($event3)">
-      {{ tastes[2] }}
+    <button
+      v-on:click="addActive(taste)"
+      v-for="taste in tastes"
+      :key="taste"
+      v-bind:class="{ 'is-active': selectedTaste === taste }"
+    >
+      {{ taste }}
     </button>
   </div>
 
   <div class="how-container">
     <h4>どんなアイスを食べてみたい？？</h4>
-    <button v-on:click="howButton($event4)">
-      {{ hows[0] }}
-    </button>
-    <button v-on:click="howButton($event5)">
-      {{ hows[1] }}
-    </button>
-    <button v-on:click="howButton($event6)">
-      {{ hows[2] }}
+    <button
+      v-on:click="addDetective(how)"
+      v-for="how in hows"
+      :key="how"
+      v-bind:class="{ 'is-active': selectedHow === how }"
+    >
+      {{ how }}
     </button>
   </div>
 
   <div class="result">
     <h4>あなたにぴったりなアイスは...?</h4>
-    <div class="pictures" v-bind:class="{ 'is-active': active === picture }">
-      {{ picture }}
-    </div>
-    <button v-on:click="resultButton(picture)">これだ！{{ hyoujiURL }}</button>
+    <button v-on:click="resultButton">これだ！</button>
+    <img v-bind:src="hyoujiURL" />
+    {{ text }}
   </div>
-
-  <div>
-  <div v-for="task in tasks" :key="task.id">
-    <div class="task__title">{{task.title}}</div>
-
-    <div class="task__body" v-bind:class="{'is-active':active === task}" >{{task.body}}
-  </div>
-  <button v-on:click="addActive(task)">bodyにclassをつける</button>
-
- </div>
 </template>
 
 <script>
@@ -55,17 +42,43 @@ export default {
         "なんだこれは！ご当地限定アイス！",
         "オトナなあなたにぜひ...♡",
       ],
-      active: null,
+      selectedTaste: "",
+      selectedHow: "",
       hyoujiURL: "",
+      text: "",
     }
   },
   methods: {
-    resultButton(picture) {
-      if (this.active === $event1 && $event4) {
-        this.hyoujiURL = URL.createObjectURL(assets/logo.png),
+    addActive(taste) {
+      if (this.selectedTaste === taste) {
+        this.selectedTaste = ""
+      } else {
+        this.selectedTaste = taste
+      }
+    },
+    addDetective(how) {
+      if (this.selectedHow === how) {
+        this.selectedHow = ""
+      } else {
+        this.selectedHow = how
+      }
+    },
+    resultButton() {
+      if (
+        this.selectedTaste === this.tastes[0] &&
+        this.selectedHow === this.hows[0]
+      ) {
+        this.hyoujiURL = require("@/assets/logo.png")
+        this.text = "アイス"
       } else {
       }
     },
   },
 }
 </script>
+
+<style scoped>
+.is-active {
+  background-color: pink;
+}
+</style>
