@@ -7,7 +7,7 @@
 footer {
   background-color: #e68cb6;
 
-  color: white;
+  color: rgb(0, 0, 0);
   padding: 20px 0px;
   margin-top: 0px;
 }
