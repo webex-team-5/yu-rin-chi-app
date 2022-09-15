@@ -135,6 +135,15 @@ export default {
           imgUrl:
             "https://th.bing.com/th/id/OIP.RsJMVqXOMupjlY0VE7nJvwHaFj?w=220&h=180&c=7&r=0&o=5&dpr=2&pid=1.7",
         },
+        {
+          name: "白い恋人ソフトクリーム",
+          place: ["北海道", "白い恋人パーク"],
+          taste: ["ホワイトチョコ", "ブラックチョコ", "ミックス"],
+          fee: 400,
+          category: "ミルク",
+          forsearch: "白い恋人",
+          imgUrl: "@//assets/image/siroikoibito.jpg",
+        },
       ],
       searchWord: "",
       displayItems: "",
@@ -195,7 +204,7 @@ export default {
 </script>
 <style scoped>
 * {
-  background-color: pink;
+  background-color: white;
 }
 img {
   height: 200px;
@@ -203,7 +212,7 @@ img {
 }
 #search-box {
   height: 25px;
-  color: rgb(8, 96, 0);
+  color: white;
 }
 #item-container {
   width: 100%;
@@ -218,7 +227,7 @@ img {
   border-radius: 30%;
 }
 .ice span {
-  background-color: palegreen;
+  background-color: white;
   border-radius: 50%;
 }
 #search-button {
