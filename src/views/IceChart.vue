@@ -27,7 +27,7 @@
   <div class="result">
     <h4>あなたにぴったりなアイスは...?</h4>
     <button v-on:click="resultButton">これだ！</button>
-    <img v-bind:src="hyoujiURL" />
+    <img v-bind:src="hyoujiURL" class="hyoujiURL" />
     {{ text }}
   </div>
 </template>
@@ -68,9 +68,56 @@ export default {
         this.selectedTaste === this.tastes[0] &&
         this.selectedHow === this.hows[0]
       ) {
-        this.hyoujiURL = require("@/assets/logo.png")
+        this.hyoujiURL = require("@/assets/chihiro014.jpg")
         this.text = "アイス"
-      } else {
+      } else if (
+        this.selectedTaste === this.tastes[0] &&
+        this.selectedHow === this.hows[1]
+      ) {
+        this.hyoujiURL = require("@/assets/totoro015.jpg")
+        this.text = "アイス"
+      } else if (
+        this.selectedTaste === this.tastes[0] &&
+        this.selectedHow === this.hows[2]
+      ) {
+        this.hyoujiURL = require("@/assets/howl016.jpg")
+        this.text = "アイス"
+      } else if (
+        this.selectedTaste === this.tastes[1] &&
+        this.selectedHow === this.hows[0]
+      ) {
+        this.hyoujiURL = require("@/assets/kokurikozaka005 (1).jpg")
+        this.text = "アイス"
+      } else if (
+        this.selectedTaste === this.tastes[1] &&
+        this.selectedHow === this.hows[1]
+      ) {
+        this.hyoujiURL = require("@/assets/laputa015.jpg")
+        this.text = "アイス"
+      } else if (
+        this.selectedTaste === this.tastes[1] &&
+        this.selectedHow === this.hows[2]
+      ) {
+        this.hyoujiURL = require("@/assets/majo043.jpg")
+        this.text = "アイス"
+      } else if (
+        this.selectedTaste === this.tastes[2] &&
+        this.selectedHow === this.hows[0]
+      ) {
+        this.hyoujiURL = require("@/assets/ponyo035.jpg")
+        this.text = "アイス"
+      } else if (
+        this.selectedTaste === this.tastes[2] &&
+        this.selectedHow === this.hows[1]
+      ) {
+        this.hyoujiURL = require("@/assets/ponyo011.jpg")
+        this.text = "アイス"
+      } else if (
+        this.selectedTaste === this.tastes[2] &&
+        this.selectedHow === this.hows[2]
+      ) {
+        this.hyoujiURL = require("@/assets/laputa033.jpg")
+        this.text = "アイス"
       }
     },
   },
@@ -80,5 +127,9 @@ export default {
 <style scoped>
 .is-active {
   background-color: pink;
+}
+
+.hyoujiURL {
+  height: 300px;
 }
 </style>
