@@ -69,55 +69,55 @@ export default {
         this.selectedHow === this.hows[0]
       ) {
         this.hyoujiURL = require("@/assets/chihiro014.jpg")
-        this.text = "アイス"
+        this.text = "プルーシールアイス"
       } else if (
         this.selectedTaste === this.tastes[0] &&
         this.selectedHow === this.hows[1]
       ) {
         this.hyoujiURL = require("@/assets/totoro015.jpg")
-        this.text = "アイス"
+        this.text = "栗ジャムソフト"
       } else if (
         this.selectedTaste === this.tastes[0] &&
         this.selectedHow === this.hows[2]
       ) {
         this.hyoujiURL = require("@/assets/howl016.jpg")
-        this.text = "アイス"
+        this.text = "味どうらくソフト"
       } else if (
         this.selectedTaste === this.tastes[1] &&
         this.selectedHow === this.hows[0]
       ) {
         this.hyoujiURL = require("@/assets/kokurikozaka005 (1).jpg")
-        this.text = "アイス"
+        this.text = "どうしよう"
       } else if (
         this.selectedTaste === this.tastes[1] &&
         this.selectedHow === this.hows[1]
       ) {
         this.hyoujiURL = require("@/assets/laputa015.jpg")
-        this.text = "アイス"
+        this.text = "ラベンダーソフト"
       } else if (
         this.selectedTaste === this.tastes[1] &&
         this.selectedHow === this.hows[2]
       ) {
         this.hyoujiURL = require("@/assets/majo043.jpg")
-        this.text = "アイス"
+        this.text = "わさびソフト"
       } else if (
         this.selectedTaste === this.tastes[2] &&
         this.selectedHow === this.hows[0]
       ) {
         this.hyoujiURL = require("@/assets/ponyo035.jpg")
-        this.text = "アイス"
+        this.text = "どうしようか"
       } else if (
         this.selectedTaste === this.tastes[2] &&
         this.selectedHow === this.hows[1]
       ) {
         this.hyoujiURL = require("@/assets/ponyo011.jpg")
-        this.text = "アイス"
+        this.text = "何がいいかな"
       } else if (
         this.selectedTaste === this.tastes[2] &&
         this.selectedHow === this.hows[2]
       ) {
         this.hyoujiURL = require("@/assets/laputa033.jpg")
-        this.text = "アイス"
+        this.text = "金箔ソフト"
       }
     },
   },
