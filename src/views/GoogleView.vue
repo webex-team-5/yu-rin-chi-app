@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="mt-4">
-    <div id="map" class="map"></div>
+    <div id="map"></div>
   </div>
 </template>
 
@@ -22,8 +22,8 @@ export default {
 }
 </script>
 <style scoped>
-.map {
+#map {
   height: 600px;
-  width: 90%;
+  width: 60%;
 }
 </style>
