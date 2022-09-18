@@ -9,7 +9,7 @@ const routes = [
     component: HomeView,
   },
   {
-    path: "/map",
+    path: "/map/",
     name: "map",
     component: GoogleView,
   },
@@ -23,8 +23,9 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
   },
   {
-    path: "/search",
+    path: "/search/:id",
     name: "search",
+    props: true,
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/SearchView.vue"),
   },

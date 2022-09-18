@@ -38,8 +38,9 @@
 
   <div id="item-container">
     <div class="ice" v-for="(item, index) in displayItems" v-bind:key="index">
-      <img v-bind:src="item.imgUrl" />
-      <span>{{ item.name }}</span>
+      <a href=""
+        ><img v-bind:src="item.imgUrl" /> <span>{{ item.name }}</span></a
+      >
     </div>
   </div>
 </template>
@@ -305,7 +306,7 @@ img {
   justify-content: space-around;
   flex-wrap: wrap;
 }
-.ice {
+.ice a {
   display: flex;
   flex-direction: column;
   margin: 10px;
