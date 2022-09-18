@@ -291,8 +291,9 @@ export default {
   background-color: white;
 }
 img {
-  height: 200px;
-  aspect-ratio: 4/3;
+  height: 250px;
+  aspect-ratio: 1;
+  border-radius: 50%;
 }
 #search-box {
   height: 25px;
