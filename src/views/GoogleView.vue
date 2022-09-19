@@ -1,51 +1,33 @@
 <template>
-  <div id="app" class="mt-4">
-    <div id="map" class="map"></div>
+  <div>
+    <h1>Google Map</h1>
+    <div ref="map" style="height: 500px; width: 800px"></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "App",
   data() {
     return {
-      map: undefined,
+      myLatLng: { lat: -34.397, lng: 150.644 },
     }
   },
   mounted() {
-    const map = new this.$gm.Map(document.getElementById("map"), {
-      center: { lat: 34.855273888888888, lng: 135.30649 }, //自由な緯度・経度を入力
-      zoom: 10,
-    })
-    this.map = map
+    let timer = setInterval(() => {
+      if (window.google) {
+        clearInterval(timer)
+        const map = new window.google.maps.Map(this.$refs.map, {
+          center: this.myLatLng,
+          zoom: 8,
+        })
+        new window.google.maps.Marker({
+          position: this.myLatLng,
+          map,
+        })
+      }
+    }, 500)
   },
 }
-</script>
-<script type="text/javascript">
-// Create the script tag, set the appropriate attributes
-var script = document.createElement("script")
-script.src =
-  "https://maps.googleapis.com/maps/api/js?key=AIzaSyChEfRcclsB7fXz3FwJOkOhIBbiXGaRZ6c&callback=initMap"
-script.async = true
-
-// Attach your callback function to the `window` object
-window.initMap = function () {
-  // JS API is loaded and available
-  mapobj = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 35.681263, lng: 139.767937 },
-    zoom: 13,
-  })
-
-  var markerPosition = new google.maps.LatLng(35.710139, 139.810833)
-  var marker = new google.maps.Marker({
-    position: markerPosition,
-    title: "東京スカイツリー",
-  })
-  marker.setMap(mapobj)
-}
-
-// Append the 'script' element to 'head'
-document.head.appendChild(script)
 </script>
 
 <div style="width: 760px; height: 480px" id="map"></div>
