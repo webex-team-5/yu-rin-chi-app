@@ -12,6 +12,7 @@ const routes = [
     path: "/map/:id",
     name: "map",
     props: true,
+
     component: GoogleView,
   },
   {
