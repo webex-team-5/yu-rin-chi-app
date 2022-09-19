@@ -3,7 +3,6 @@
     <div id="map"></div>
   </div>
 </template>
-
 <script>
 export default {
   name: "App",
@@ -22,8 +21,8 @@ export default {
 }
 </script>
 <style scoped>
-#map {
-  height: 600px;
+#app {
+  height: 60px;
   width: 60%;
 }
 </style>
