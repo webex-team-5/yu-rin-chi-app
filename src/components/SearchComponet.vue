@@ -38,7 +38,7 @@
 
   <div id="item-container">
     <div class="ice" v-for="(item, index) in displayItems" v-bind:key="index">
-      <router-link v-bind:to="{ name: 'map', params: { id: index } }"
+      <router-link v-bind:to="{ name: 'map', params: { ice: index } }"
         ><img v-bind:src="item.imgUrl" />
         <span>{{ item.name }}</span></router-link
       >

@@ -1,6 +1,8 @@
 <template>
   <div id="container">
-    <div id="detail"></div>
+    <div id="detail">
+      <img v-bind:src="items[iceNum].imgUrl" />
+    </div>
     <div id="google-map" ref="map"></div>
   </div>
 </template>
@@ -11,6 +13,8 @@ export default {
     return {
       myLatLng: { lat: -34.397, lng: 150.644 },
       id: "a",
+      ice: "hello",
+      iceNum: "",
       items: [
         {
           name: "金太郎ソフト",
@@ -228,21 +232,22 @@ export default {
         })
       }
     }, 500)
-    console.log(this.$router.params.id)
+    this.iceNum = this.$route.params.ice
+    console.log(this.iceNum)
   },
 }
 </script>
 <style scoped>
 #google-map {
   height: 500px;
-  width: 40%;
+  width: 50%;
 }
 #container {
   display: flex;
-  width: 500px;
+  width: 100%;
 }
 #detail {
   height: 500px;
-  width: 40%;
+  width: 50%;
 }
 </style>

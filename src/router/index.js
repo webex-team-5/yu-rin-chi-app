@@ -9,7 +9,7 @@ const routes = [
     component: HomeView,
   },
   {
-    path: "/map/:id",
+    path: "/map/:ice",
     name: "map",
     props: true,
 
