@@ -2,6 +2,13 @@
   <div id="container">
     <div id="detail">
       <img v-bind:src="items[iceNum].imgUrl" />
+      <ul>
+        <li>{{ items[iceNum].name }}</li>
+        <li>{{ items[iceNum].place[0] }}</li>
+        <li>{{ items[iceNum].fee }}円</li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
     <div id="google-map" ref="map"></div>
   </div>
@@ -14,7 +21,7 @@ export default {
       myLatLng: { lat: -34.397, lng: 150.644 },
       id: "a",
       ice: "hello",
-      iceNum: "",
+      iceNum: 0,
       items: [
         {
           name: "金太郎ソフト",
@@ -249,5 +256,17 @@ export default {
 #detail {
   height: 500px;
   width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+img {
+  width: 40%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: aqua;
+  margin: 20px auto;
+}
+ul {
+  list-style: none;
 }
 </style>
