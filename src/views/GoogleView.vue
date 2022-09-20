@@ -10,6 +10,7 @@ export default {
   data() {
     return {
       myLatLng: { lat: -34.397, lng: 150.644 },
+      id: "a",
       items: [
         {
           name: "金太郎ソフト",
@@ -227,18 +228,21 @@ export default {
         })
       }
     }, 500)
+    console.log(this.$router.params.id)
   },
 }
 </script>
 <style scoped>
 #google-map {
   height: 500px;
+  width: 40%;
 }
 #container {
   display: flex;
-  flex-direction: row;
+  width: 500px;
 }
 #detail {
   height: 500px;
+  width: 40%;
 }
 </style>
