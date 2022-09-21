@@ -18,7 +18,7 @@
 export default {
   data() {
     return {
-      myLatLng: { lat: -34.397, lng: 150.644 },
+      myLatLng: "",
       id: "a",
       ice: "hello",
       iceNum: 0,
@@ -32,6 +32,8 @@ export default {
           category: "ミルク",
           forsearch: "金太郎",
           imgUrl: require("@/assets/image/kintarou.jpg"),
+          lat: 35.312782,
+          lng: 138.967133,
         },
         {
           name: "アイスコルネット",
@@ -111,6 +113,8 @@ export default {
           category: "ミルク",
           forsearch: "白い恋人",
           imgUrl: require("@/assets/image/siroikoibito.jpg"),
+          lat: 43.0891218879024,
+          lng: 141.27173638441494,
         },
         {
           name: "チョコ南部アイス",
@@ -121,6 +125,8 @@ export default {
           category: "ミルク",
           forsearch: "南部せんべい",
           imgUrl: require("@/assets/image/nanbutyoko.png"),
+          lat: 40.252541375222336,
+          lng: 141.2872484839152,
         },
         {
           name: "ババヘラアイス",
@@ -131,6 +137,8 @@ export default {
           category: "フルーツ",
           forsearch: "ババヘラ",
           imgUrl: require("@/assets/image/babahera.png"),
+          lat: 39.75193309914359,
+          lng: 140.0619679550641,
         },
         {
           name: "殿様のだだちゃ豆アイスクリーム",
@@ -141,6 +149,8 @@ export default {
           category: "ミルク",
           forsearch: ["ただちゃ豆", "殿様", "殿様アイス"],
           imgUrl: require("@/assets/image/tadatyamame.png"),
+          lat: 38.730285868102904,
+          lng: 139.77497886902088,
         },
         {
           name: "酪王カフェオレソフトクリーム",
@@ -151,6 +161,8 @@ export default {
           category: "ミルク",
           forsearch: ["酪王"],
           imgUrl: require("@/assets/image/cafe.png"),
+          lat: 37.63647623778828,
+          lng: 140.48322228725218,
         },
         {
           name: "元祖信玄ソフト",
@@ -161,6 +173,8 @@ export default {
           category: "ミルク",
           forsearch: ["信玄餅", "元祖"],
           imgUrl: require("@/assets/image/singen.png"),
+          lat: 35.865999887397905,
+          lng: 138.42767199358087,
         },
         {
           name: "仁王門屋の元祖そばソフトクリーム",
@@ -171,6 +185,8 @@ export default {
           category: "和風",
           forsearch: ["信玄餅", "元祖"],
           imgUrl: require("@/assets/image/soba.png"),
+          lat: 36.899235812813544,
+          lng: 138.09527084457196,
         },
         {
           name: "セイヒョーもも太郎",
@@ -181,6 +197,8 @@ export default {
           category: "フルーツ",
           forsearch: ["セイヒョー", "もも太郎", "金太郎"],
           imgUrl: require("@/assets/image/momotaro.png"),
+          lat: 37.93183511267325,
+          lng: 139.16891848199555,
         },
         {
           name: "ちゅーりっぷソフト",
@@ -226,6 +244,9 @@ export default {
     }
   },
   mounted() {
+    this.iceNum = this.$route.params.ice
+    let targetIce = this.items[this.iceNum]
+    this.myLatLng = { lat: targetIce.lat, lng: targetIce.lng }
     let timer = setInterval(() => {
       if (window.google) {
         clearInterval(timer)
@@ -239,8 +260,6 @@ export default {
         })
       }
     }, 500)
-    this.iceNum = this.$route.params.ice
-    console.log(this.iceNum)
   },
 }
 </script>
