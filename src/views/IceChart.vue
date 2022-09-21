@@ -1,5 +1,5 @@
 <template>
-  <h1>アイスクリームチャート</h1>
+  <h2>アイスクリームチャート</h2>
   <div class="taste-container">
     <h4>あなたの食べたい味は？？</h4>
     <button
@@ -7,6 +7,7 @@
       v-for="taste in tastes"
       :key="taste"
       v-bind:class="{ 'is-active': selectedTaste === taste }"
+      class="btn-circle-stitch"
     >
       {{ taste }}
     </button>
@@ -19,6 +20,7 @@
       v-for="how in hows"
       :key="how"
       v-bind:class="{ 'is-active': selectedHow === how }"
+      class="btn-circle-stitch"
     >
       {{ how }}
     </button>
@@ -37,11 +39,7 @@ export default {
   data() {
     return {
       tastes: ["甘～い", "すっきり", "濃厚"],
-      hows: [
-        "みんな大好き定番の味！",
-        "なんだこれは！ご当地限定アイス！",
-        "オトナなあなたにぜひ...♡",
-      ],
+      hows: ["定番の味！", "ご当地限定アイス！", "オトナなアイス...♡"],
       selectedTaste: "",
       selectedHow: "",
       hyoujiURL: "",
@@ -125,8 +123,48 @@ export default {
 </script>
 
 <style scoped>
+/*タイトルデザイン*/
+h2 {
+  position: relative;
+  display: inline-block;
+  padding: 0 65px;
+  text-align: center;
+}
+h2:before,
+h2:after {
+  position: absolute;
+  top: calc(50% - 3px);
+  width: 50px;
+  height: 6px;
+  content: '';
+  border-top: solid 2px #000;
+  border-bottom: solid 2px #000;
+}
+h2:before {
+  left: 0;
+}
+h2:after {
+  right: 0;
+}
+
+.taste-container {
+  margin: 0 auto;
+}
 .is-active {
   background-color: pink;
+}
+.btn-circle-stitch {
+  text-decoration: none;
+  color: black;
+  width: 230px;
+  height: 230px;
+  line-height: 120px;
+  border-radius: 20%;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 0px 0px 0px 5px pink;
+  border: dashed 1px #fff;
+  margin-right: 100px;
 }
 
 .hyoujiURL {
