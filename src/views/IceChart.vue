@@ -1,31 +1,35 @@
 <template>
-  <h1>アイスクリームチャート</h1>
+  <div class="title">
+    <h2>アイスクリームチャート</h2>
+  </div>
   <div class="taste-container">
-    <h4>あなたの食べたい味は？？</h4>
+    <h3 class="heading" data-number="01">あなたの食べたい味は？？</h3>
     <button
       v-on:click="addActive(taste)"
       v-for="taste in tastes"
       :key="taste"
       v-bind:class="{ 'is-active': selectedTaste === taste }"
+      class="btn-circle-stitch"
     >
       {{ taste }}
     </button>
   </div>
 
   <div class="how-container">
-    <h4>どんなアイスを食べてみたい？？</h4>
+    <h3 class="heading" data-number="02">どんなアイスを食べてみたい？？</h3>
     <button
       v-on:click="addDetective(how)"
       v-for="how in hows"
       :key="how"
       v-bind:class="{ 'is-active': selectedHow === how }"
+      class="btn-circle-stitch"
     >
       {{ how }}
     </button>
   </div>
 
   <div class="result">
-    <h4>あなたにぴったりなアイスは...?</h4>
+    <h3 class="heading" data-number="03">あなたにぴったりなアイスは...?</h3>
     <button v-on:click="resultButton">これだ！</button>
     <img v-bind:src="hyoujiURL" class="hyoujiURL" />
     {{ text }}
@@ -36,7 +40,7 @@
 export default {
   data() {
     return {
-      tastes: ["甘～い", "すっきり", "濃厚"],
+      tastes: ["甘～いアイス", "すっきりしたアイス", "濃厚なアイス"],
       hows: [
         "みんな大好き定番の味！",
         "なんだこれは！ご当地限定アイス！",
@@ -126,11 +130,14 @@ export default {
 
 <style scoped>
 /*タイトルデザイン*/
+.title {
+  text-align: center;
+  font-size: 20px;
+}
 h2 {
   position: relative;
   display: inline-block;
   padding: 0 65px;
-  text-align: center;
 }
 h2:before,
 h2:after {
@@ -148,12 +155,9 @@ h2:before {
 h2:after {
   right: 0;
 }
-
-.taste-container {
-  margin: 0 auto;
-}
+/*ボタンデザイン*/
 .is-active {
-  background-color: pink;
+  background-color: #fffbb3;
 }
 .btn-circle-stitch {
   text-decoration: none;
@@ -161,12 +165,25 @@ h2:after {
   width: 230px;
   height: 230px;
   line-height: 120px;
-  border-radius: 20%;
+  border-radius: 50%;
   text-align: center;
   overflow: hidden;
-  box-shadow: 0px 0px 0px 5px pink;
+  box-shadow: 0px 0px 0px 5px #fffbb3;
   border: dashed 1px #fff;
-  margin-right: 100px;
+  margin: 0 auto;
+}
+/*質問デザイン*/
+.heading {
+  position: relative;
+  font-size: 26px;
+}
+.heading::before {
+  content: attr(data-number);
+  display: inline-block;
+  margin-right: 20px;
+  color: #f19d85;
+  font-size: 30px;
+  border-bottom: 1px solid #f19d85;
 }
 
 .hyoujiURL {
