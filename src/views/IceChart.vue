@@ -1,5 +1,5 @@
 <template>
-  <h2>アイスクリームチャート</h2>
+  <h1>アイスクリームチャート</h1>
   <div class="taste-container">
     <h4>あなたの食べたい味は？？</h4>
     <button
@@ -7,7 +7,6 @@
       v-for="taste in tastes"
       :key="taste"
       v-bind:class="{ 'is-active': selectedTaste === taste }"
-      class="btn-circle-stitch"
     >
       {{ taste }}
     </button>
@@ -20,7 +19,6 @@
       v-for="how in hows"
       :key="how"
       v-bind:class="{ 'is-active': selectedHow === how }"
-      class="btn-circle-stitch"
     >
       {{ how }}
     </button>
@@ -39,7 +37,11 @@ export default {
   data() {
     return {
       tastes: ["甘～い", "すっきり", "濃厚"],
-      hows: ["定番の味！", "ご当地限定アイス！", "オトナなアイス...♡"],
+      hows: [
+        "みんな大好き定番の味！",
+        "なんだこれは！ご当地限定アイス！",
+        "オトナなあなたにぜひ...♡",
+      ],
       selectedTaste: "",
       selectedHow: "",
       hyoujiURL: "",
@@ -66,55 +68,55 @@ export default {
         this.selectedTaste === this.tastes[0] &&
         this.selectedHow === this.hows[0]
       ) {
-        this.hyoujiURL = require("@/assets/chihiro014.jpg")
-        this.text = "プルーシールアイス"
+        this.hyoujiURL = require("@/assets/image/siroikoibito.jpg")
+        this.text = "白い恋人ソフトクリーム"
       } else if (
         this.selectedTaste === this.tastes[0] &&
         this.selectedHow === this.hows[1]
       ) {
-        this.hyoujiURL = require("@/assets/totoro015.jpg")
-        this.text = "栗ジャムソフト"
+        this.hyoujiURL = require("@/assets/image/azuki.png")
+        this.text = "越前塩あずきソフト"
       } else if (
         this.selectedTaste === this.tastes[0] &&
         this.selectedHow === this.hows[2]
       ) {
-        this.hyoujiURL = require("@/assets/howl016.jpg")
+        this.hyoujiURL = require("@/assets/image/ajidouraku.png")
         this.text = "味どうらくソフト"
       } else if (
         this.selectedTaste === this.tastes[1] &&
         this.selectedHow === this.hows[0]
       ) {
-        this.hyoujiURL = require("@/assets/kokurikozaka005 (1).jpg")
-        this.text = "どうしよう"
+        this.hyoujiURL = require("@/assets/image/azumino.png")
+        this.text = "安曇野りんごソフト"
       } else if (
         this.selectedTaste === this.tastes[1] &&
         this.selectedHow === this.hows[1]
       ) {
-        this.hyoujiURL = require("@/assets/laputa015.jpg")
+        this.hyoujiURL = require("@/assets/image/rabenda.png")
         this.text = "ラベンダーソフト"
       } else if (
         this.selectedTaste === this.tastes[1] &&
         this.selectedHow === this.hows[2]
       ) {
-        this.hyoujiURL = require("@/assets/majo043.jpg")
+        this.hyoujiURL = require("@/assets/image/wasabi.png")
         this.text = "わさびソフト"
       } else if (
         this.selectedTaste === this.tastes[2] &&
         this.selectedHow === this.hows[0]
       ) {
-        this.hyoujiURL = require("@/assets/ponyo035.jpg")
-        this.text = "どうしようか"
+        this.hyoujiURL = require("@/assets/image/singen.png")
+        this.text = "元祖信玄ソフト"
       } else if (
         this.selectedTaste === this.tastes[2] &&
         this.selectedHow === this.hows[1]
       ) {
-        this.hyoujiURL = require("@/assets/ponyo011.jpg")
-        this.text = "何がいいかな"
+        this.hyoujiURL = require("@/assets/image/nanbutyoko.png")
+        this.text = "チョコ南部アイス"
       } else if (
         this.selectedTaste === this.tastes[2] &&
         this.selectedHow === this.hows[2]
       ) {
-        this.hyoujiURL = require("@/assets/laputa033.jpg")
+        this.hyoujiURL = require("@/assets/image/kinpaku.jpg")
         this.text = "金箔ソフト"
       }
     },
@@ -136,7 +138,7 @@ h2:after {
   top: calc(50% - 3px);
   width: 50px;
   height: 6px;
-  content: '';
+  content: "";
   border-top: solid 2px #000;
   border-bottom: solid 2px #000;
 }
