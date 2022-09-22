@@ -184,7 +184,8 @@ h2:after {
 .heading {
   position: relative;
   font-size: 26px;
-  margin-left: 130px;
+  text-align: left;
+  padding-left: 170px;
 }
 .heading::before {
   content: attr(data-number);
@@ -193,14 +194,6 @@ h2:after {
   color: #ffbebd;
   font-size: 30px;
   border-bottom: 1px solid #ffbebd;
-}
-/*中央寄せ*/
-.taste-container,
-.how-container,
-.result,
-.result-container {
-  text-align: center;
-  width: 100%;
 }
 /*結果表示ボタン*/
 .resultButton {
