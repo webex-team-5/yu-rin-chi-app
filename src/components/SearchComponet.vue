@@ -311,7 +311,7 @@ export default {
 </script>
 <style scoped>
 * {
-  background-color: rgb(255, 240, 240);
+  background-color: #fcefef;
 }
 img {
   height: 250px;
@@ -337,7 +337,7 @@ img {
   text-decoration: none;
 }
 .ice span {
-  text-decoration: underline rgb(255, 128, 149);
+  text-decoration: underline #ffbebd;
 }
 
 #checkbox-container {

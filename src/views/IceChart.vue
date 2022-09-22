@@ -131,7 +131,7 @@ export default {
 <style scoped>
 * {
   color: #1a405f;
-  background-color: #faf5f5;
+  background-color: #fcefef;
 }
 /*タイトルデザイン*/
 .title {
@@ -174,6 +174,7 @@ h2:after {
   margin: 30px;
   font-size: 20px;
   background-color: white;
+  font-weight: bold;
 }
 .is-active {
   background-color: #337bae;

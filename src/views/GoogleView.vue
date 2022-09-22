@@ -1,3 +1,4 @@
+npm i --save @fortawesome/vue-fontawesome@latest-3
 <template>
   <div id="container">
     <div id="detail">
@@ -7,6 +8,7 @@
 
       <img v-bind:src="items[iceNum].imgUrl" />
       <li>
+        <fa-icon icon="spinner" class="fa-3x fa-pulse" />
         {{ items[iceNum].place[0] }}
       </li>
       <li>{{ items[iceNum].fee }}円</li>
@@ -269,15 +271,14 @@ export default {
 </script>
 <style scoped>
 * {
-  background-color: #faf5f5;
+  background-color: #fcefef;
   color: #1a405f;
-
 }
 #google-map {
   height: 500px;
-  width: 700px;
+  width: 500px;
   margin: auto;
-  
+  filter: drop-shadow(3px 3px 5px #000);
 }
 #container {
   display: flex;
