@@ -16,7 +16,6 @@
         <slide> <img src="../assets/renkon.png" /> </slide>
         <slide> <img src="../assets/tyu-rip.png" /> </slide>
         <slide> <img src="../assets/wasabi.png" /> </slide>
-        <slide> <img src="../assets/tadatyamame.png" /> </slide>
       </div>
     </Slide>
 
@@ -89,8 +88,8 @@ img:hover {
 
 .carousel__item {
   height: 500px;
-  width: 1000%;
+  width: 1000px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 </style>
