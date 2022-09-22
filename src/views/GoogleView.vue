@@ -7,13 +7,12 @@ npm i --save @fortawesome/vue-fontawesome@latest-3
       </div>
 
       <img v-bind:src="items[iceNum].imgUrl" />
-      <li>
-        <fa-icon icon="spinner" class="fa-3x fa-pulse" />
-        🚩{{ items[iceNum].place[0] }}
-      </li>
-      <li>🪙{{ items[iceNum].fee }}円</li>
-      <li>🍦{{ items[iceNum].taste[0] }}</li>
-      <li>💭{{ items[iceNum].text }}</li>
+      <div class="information">
+        <li>🚩{{ items[iceNum].place[0] }}</li>
+        <li>🪙{{ items[iceNum].fee }}円</li>
+        <li>🍦{{ items[iceNum].taste[0] }}</li>
+      </div>
+      <li>{{ items[iceNum].text }}</li>
     </div>
     <div id="google-map" ref="map"></div>
   </div>
@@ -296,9 +295,10 @@ export default {
   color: #1a405f;
 }
 #google-map {
-  height: 500px;
+  height: 600px;
   width: 500px;
   margin: auto;
+  padding-top: 30px;
   filter: drop-shadow(3px 3px 5px #000);
 }
 #container {
@@ -307,7 +307,7 @@ export default {
   height: 100%;
 }
 #detail {
-  height: 700px;
+  height: 750px;
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -325,6 +325,11 @@ li {
   width: 100%;
   list-style: none;
   font-size: large;
+  padding-left: 20px;
+  line-height: 40px;
+}
+.information {
+  display: flex;
 }
 /*タイトルデザイン*/
 .title {

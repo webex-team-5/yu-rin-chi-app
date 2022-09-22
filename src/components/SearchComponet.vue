@@ -6,7 +6,7 @@
       v-model="searchWord"
       @input="searching"
       v-on:keydown.enter="searchButton"
-      placeholder="Search Icecream!!"
+      placeholder="Search Icecream!"
     />
     <form>
       <input
@@ -15,6 +15,7 @@
         v-on:keydown.enter="searchButton"
         min="0"
         max="1000"
+        class="range"
       /><label><br />¥{{ rangeBar }}以内</label>
     </form>
     <div id="checkbox-container">
@@ -33,7 +34,9 @@
         <label v-bind:for="'checkbox' + index">{{ category }}</label>
       </div>
     </div>
-    <button id="search-button" v-on:click="searchButton">Click or Enter</button>
+    <button id="search-button" v-on:click="searchButton" class="resultButton">
+      <a>Search!</a>
+    </button>
   </div>
 
   <div id="item-container">
@@ -313,11 +316,55 @@ export default {
 * {
   background-color: #fcefef;
 }
+.range {
+  color: #337bae;
+}
+/*検索結果表示ボタンのデザイン*/
+.resultButton {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 240px;
+  padding: 10px 25px;
+  color: #337bae;
+  transition: 0.3s ease-in-out;
+  font-weight: 600;
+  background-color: white;
+  border-radius: 50px;
+  border: 0.2rem solid #337bae;
+  box-shadow: 0.2rem 0.2rem 0px 0.1rem #cccccc;
+}
+.resultButton:hover {
+  transform: translate3d(0.2rem, 0.2rem, 0);
+  box-shadow: none;
+  opacity: 1;
+  transition: all 0.2s;
+}
+.resultButton:after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-top: 3px solid #337bae;
+  border-right: 3px solid #337bae;
+  transform: rotate(45deg) translateY(-50%);
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  border-radius: 1px;
+  transition: 0.3s ease-in-out;
+}
+.resultButton a {
+  background-color: white;
+}
+
 img {
   height: 250px;
   aspect-ratio: 1;
   border-radius: 50%;
   background-color: white;
+  border: 3px solid #ffbebd;
 }
 #search-box {
   height: 25px;
@@ -329,6 +376,9 @@ img {
   justify-content: space-around;
   flex-wrap: wrap;
 }
+#item-container span {
+  padding-top: 12px;
+}
 .ice a {
   display: flex;
   flex-direction: column;
@@ -337,7 +387,7 @@ img {
   text-decoration: none;
 }
 .ice span {
-  text-decoration: underline #ffbebd;
+  color: #1a405f;
 }
 
 #checkbox-container {
@@ -347,8 +397,5 @@ img {
 }
 .check {
   margin: 10px;
-}
-#item-container span {
-  color: black;
 }
 </style>
