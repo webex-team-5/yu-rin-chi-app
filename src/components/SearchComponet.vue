@@ -1,18 +1,48 @@
 <template>
-  <div id="container">
-    <div id="detail">
-      <li>
-        <h2>{{ items[iceNum].name }}</h2>
-      </li>
-
-      <img v-bind:src="items[iceNum].imgUrl" />
-      <li>
-        {{ items[iceNum].place[0] }}
-      </li>
-      <li>{{ items[iceNum].fee }}円</li>
-      <li>{{ items[iceNum].taste[0] }}</li>
+  <div id="search">
+    <input
+      id="search-box"
+      type="text"
+      v-model="searchWord"
+      @input="searching"
+      v-on:keydown.enter="searchButton"
+      placeholder="Search Icecream!!"
+    />
+    <form>
+      <input
+        type="range"
+        v-model="rangeBar"
+        v-on:keydown.enter="searchButton"
+        min="0"
+        max="1000"
+      /><label><br />¥{{ rangeBar }}以内</label>
+    </form>
+    <div id="checkbox-container">
+      <div
+        class="check"
+        v-for="(category, index) in categories"
+        v-bind:key="index"
+      >
+        <input
+          v-bind:id="'checkbox' + index"
+          type="checkbox"
+          v-model="checkList"
+          v-bind:value="category"
+          v-on:keydown.enter="searchButton"
+        />
+        <label v-bind:for="'checkbox' + index">{{ category }}</label>
+      </div>
     </div>
-    <div id="google-map" ref="map"></div>
+    <button id="search-button" v-on:click="searchButton">Click or Enter</button>
+  </div>
+
+  <div id="item-container">
+    <div class="ice" v-for="(item, index) in displayItems" v-bind:key="index">
+      <router-link v-bind:to="{ name: 'map', params: { ice: index } }"
+        ><img v-bind:src="item.imgUrl" />
+        <span>{{ item.name }}</span></router-link
+      >
+    </div>
   </div>
 </template>
 
@@ -20,28 +50,22 @@
 export default {
   data() {
     return {
-      myLatLng: "",
-      id: "a",
-      ice: "hello",
-      iceNum: 0,
       items: [
         {
           name: "金太郎ソフト",
           urlName: "kintarou",
           place: ["神奈川"],
-          taste: ["牛乳"],
+          taste: "牛乳",
           fee: 390,
           category: "ミルク",
           forsearch: "金太郎",
           imgUrl: require("@/assets/image/kintarou.jpg"),
-          lat: 35.312782,
-          lng: 138.967133,
         },
         {
           name: "アイスコルネット",
           urlName: "ice_cornet",
           place: ["北海道"],
-          taste: ["バニラ"],
+          taste: "色々",
           fee: 450,
           forsearch: "パン",
           category: "その他",
@@ -51,7 +75,7 @@ export default {
           name: "安曇野りんごソフトクリーム",
           urlName: "azumino",
           place: ["長野", "expasa足柄", "足柄"],
-          taste: ["りんご"],
+          taste: "りんご",
           fee: 330,
           category: "フルーツ",
           forsearch: ["安曇野", "りんごソフト"],
@@ -61,17 +85,18 @@ export default {
           name: "本わさびソフト",
           urlName: "wasabi",
           place: ["山梨", "谷村", "谷村PA"],
-          taste: ["わさび"],
+          taste: "わさび",
           fee: 350,
           category: "和風",
           forsearch: "",
           imgUrl: require("@/assets/image/wasabi.png"),
         },
+
         {
           name: "金箔ソフト",
           urlName: "kinpaku",
           place: ["石川"],
-          taste: ["バニラ"],
+          taste: "色々",
           fee: 891,
           category: "和風",
           forsearch: "金箔",
@@ -81,7 +106,7 @@ export default {
           name: "ラベンダーソフト",
           urlName: "rabenda",
           place: ["北海道"],
-          taste: ["ラベンダー"],
+          taste: "ラベンダー",
           fee: 300,
           category: "フルーツ",
           imgUrl: require("@/assets/image/rabenda.png"),
@@ -90,7 +115,7 @@ export default {
           name: "味道楽ソフトクリーム",
           urlName: "ajidouraku",
           place: ["秋田"],
-          taste: ["醤油"],
+          taste: "色々",
           fee: 330,
           category: "和風",
           forsearch: "味道楽",
@@ -105,8 +130,6 @@ export default {
           category: "ミルク",
           forsearch: "白い恋人",
           imgUrl: require("@/assets/image/siroikoibito.jpg"),
-          lat: 43.0891218879024,
-          lng: 141.27173638441494,
         },
         {
           name: "チョコ南部アイス",
@@ -117,8 +140,6 @@ export default {
           category: "ミルク",
           forsearch: "南部せんべい",
           imgUrl: require("@/assets/image/nanbutyoko.png"),
-          lat: 40.252541375222336,
-          lng: 141.2872484839152,
         },
         {
           name: "ババヘラアイス",
@@ -129,8 +150,6 @@ export default {
           category: "フルーツ",
           forsearch: "ババヘラ",
           imgUrl: require("@/assets/image/babahera.png"),
-          lat: 39.75193309914359,
-          lng: 140.0619679550641,
         },
         {
           name: "殿様のだだちゃ豆アイスクリーム",
@@ -141,8 +160,6 @@ export default {
           category: "ミルク",
           forsearch: ["ただちゃ豆", "殿様", "殿様アイス"],
           imgUrl: require("@/assets/image/tadatyamame.png"),
-          lat: 38.730285868102904,
-          lng: 139.77497886902088,
         },
         {
           name: "酪王カフェオレソフトクリーム",
@@ -153,8 +170,6 @@ export default {
           category: "ミルク",
           forsearch: ["酪王"],
           imgUrl: require("@/assets/image/cafe.png"),
-          lat: 37.63647623778828,
-          lng: 140.48322228725218,
         },
         {
           name: "元祖信玄ソフト",
@@ -165,8 +180,6 @@ export default {
           category: "ミルク",
           forsearch: ["信玄餅", "元祖"],
           imgUrl: require("@/assets/image/singen.png"),
-          lat: 35.865999887397905,
-          lng: 138.42767199358087,
         },
         {
           name: "仁王門屋の元祖そばソフトクリーム",
@@ -177,8 +190,6 @@ export default {
           category: "和風",
           forsearch: ["信玄餅", "元祖"],
           imgUrl: require("@/assets/image/soba.png"),
-          lat: 36.899235812813544,
-          lng: 138.09527084457196,
         },
         {
           name: "セイヒョーもも太郎",
@@ -189,8 +200,6 @@ export default {
           category: "フルーツ",
           forsearch: ["セイヒョー", "もも太郎", "金太郎"],
           imgUrl: require("@/assets/image/momotaro.png"),
-          lat: 37.93183511267325,
-          lng: 139.16891848199555,
         },
         {
           name: "ちゅーりっぷソフト",
@@ -198,7 +207,7 @@ export default {
           place: ["富山"],
           taste: ["チューリップ"],
           fee: 380,
-          category: "色々",
+          category: "その他",
           forsearch: ["ちゅーりっぷ"],
           imgUrl: require("@/assets/image/tyu-rip.png"),
         },
@@ -241,29 +250,62 @@ export default {
           category: "その他",
           forsearch: ["ブルーシール"],
           imgUrl: require("@/assets/image/blue.png"),
-          lat: 26.330185101243583,
-          lng: 127.75246681188305,
         },
       ],
+      searchWord: "",
+      displayItems: "",
+      rangeBar: 1000,
+      categories: [],
+      checkList: [],
+      data: "hello",
     }
   },
-  mounted() {
-    this.iceNum = this.$route.params.ice
-    let targetIce = this.items[this.iceNum]
-    this.myLatLng = { lat: targetIce.lat, lng: targetIce.lng }
-    let timer = setInterval(() => {
-      if (window.google) {
-        clearInterval(timer)
-        const map = new window.google.maps.Map(this.$refs.map, {
-          center: this.myLatLng,
-          zoom: 8,
-        })
-        new window.google.maps.Marker({
-          position: this.myLatLng,
-          map,
-        })
+  methods: {
+    searchButton: function () {
+      let searchedList = []
+      //入力したワードから検索
+      this.items.forEach((item) => {
+        if (Object.values(item).flat().indexOf(this.searchWord) != -1) {
+          //Object.values(item).flat()は二重を一重のリストにしました
+          searchedList.push(item)
+        }
+      })
+      //検索ボックスの入力がない場合
+      if (this.searchWord == "") {
+        searchedList = this.items
       }
-    }, 500)
+      //料金のバーから絞る
+      searchedList = searchedList.filter(
+        (element) => element.fee <= this.rangeBar
+      )
+      //チェックボックスからカテゴリーを絞る
+      let newSearchedList = []
+      searchedList.forEach((item) => {
+        this.checkList.forEach((check) => {
+          if (item.category === check) {
+            newSearchedList.push(item)
+          }
+        })
+      })
+      //newsearchedListに何もない場合の表示(checkboxが0)
+      if (newSearchedList.length == 0) {
+        this.displayItems = searchedList
+      } else {
+        //☑されている場合
+        this.displayItems = newSearchedList
+      }
+    },
+  },
+  mounted: function () {
+    this.displayItems = this.items
+    //itemsオブジェクトのcategoryをthis.categoriesに代入
+    this.items.forEach((item) => {
+      this.categories.push(item.category)
+    })
+    this.categories = new Set(this.categories) //重複を消去
+    /* this.items.forEach((item) => {
+      console.log(Object.values(item))
+    }) */
   },
 }
 </script>
@@ -271,35 +313,42 @@ export default {
 * {
   background-color: rgb(255, 240, 240);
 }
-#google-map {
-  height: 500px;
-  width: 40%;
-  margin: auto;
-}
-#container {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  padding-bottom: 100px;
-}
-#detail {
-  height: 700px;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 img {
-  width: 40%;
+  height: 250px;
   aspect-ratio: 1;
   border-radius: 50%;
   background-color: white;
-  margin: 20px auto;
+}
+#search-box {
+  height: 25px;
+  color: black;
+}
+#item-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.ice a {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  border-radius: 30%;
+  text-decoration: none;
+}
+.ice span {
+  text-decoration: underline rgb(255, 128, 149);
 }
 
-li {
-  width: 100%;
-  list-style: none;
-  font-size: large;
+#checkbox-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.check {
+  margin: 10px;
+}
+#item-container span {
+  color: black;
 }
 </style>

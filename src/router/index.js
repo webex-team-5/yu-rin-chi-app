@@ -10,8 +10,10 @@ const routes = [
     component: HomeView,
   },
   {
-    path: "/map",
+    path: "/map/:ice",
     name: "map",
+    props: true,
+
     component: GoogleView,
   },
   {
@@ -22,6 +24,12 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+  },
+  {
+    path: "/search",
+    name: "search",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/SearchView.vue"),
   },
   {
     path: "/icechart",
