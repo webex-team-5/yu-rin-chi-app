@@ -1,9 +1,9 @@
 <template>
   <div id="container">
     <div id="detail">
-      <li>
+      <div class="title">
         <h2>{{ items[iceNum].name }}</h2>
-      </li>
+      </div>
 
       <img v-bind:src="items[iceNum].imgUrl" />
       <li>
@@ -256,7 +256,7 @@ export default {
         clearInterval(timer)
         const map = new window.google.maps.Map(this.$refs.map, {
           center: this.myLatLng,
-          zoom: 8,
+          zoom: 7,
         })
         new window.google.maps.Marker({
           position: this.myLatLng,
@@ -269,18 +269,20 @@ export default {
 </script>
 <style scoped>
 * {
-  background-color: rgb(255, 240, 240);
+  background-color: #faf5f5;
+  color: #1a405f;
+
 }
 #google-map {
   height: 500px;
-  width: 40%;
+  width: 700px;
   margin: auto;
+  
 }
 #container {
   display: flex;
   width: 100%;
   height: 100%;
-  padding-bottom: 100px;
 }
 #detail {
   height: 700px;
@@ -290,16 +292,42 @@ export default {
   justify-content: center;
 }
 img {
-  width: 40%;
+  width: 60%;
   aspect-ratio: 1;
   border-radius: 50%;
   background-color: white;
   margin: 20px auto;
+  border: 5px solid #ffbebd;
 }
-
 li {
   width: 100%;
   list-style: none;
   font-size: large;
+}
+/*タイトルデザイン*/
+.title {
+  text-align: center;
+  font-size: 20px;
+}
+h2 {
+  position: relative;
+  display: inline-block;
+  padding: 0 65px;
+}
+h2:before,
+h2:after {
+  position: absolute;
+  top: calc(50% - 3px);
+  width: 50px;
+  height: 6px;
+  content: "";
+  border-top: solid 2px #1a405f;
+  border-bottom: solid 2px #1a405f;
+}
+h2:before {
+  left: 0;
+}
+h2:after {
+  right: 0;
 }
 </style>
