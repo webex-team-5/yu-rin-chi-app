@@ -11,8 +11,8 @@
 </template>
 <style scoped>
 * {
-  color: #ffbebd;
-  background-color: white;
+  color: #1a405f;
+  background-color: #ffbebd;
 }
 ul {
   display: flex;
