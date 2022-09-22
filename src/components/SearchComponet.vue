@@ -91,16 +91,7 @@ export default {
           forsearch: "",
           imgUrl: require("@/assets/image/wasabi.png"),
         },
-        {
-          name: "山江村産　栗ジャムソフト",
-          urlName: "kuri",
-          place: ["熊本"],
-          taste: "栗",
-          fee: 410,
-          category: "その他",
-          forsearch: ["山江村", "栗ジャム", "山江村産"],
-          imgUrl: require("@/assets/image/kuri.jpg"),
-        },
+
         {
           name: "金箔ソフト",
           urlName: "kinpaku",
@@ -216,7 +207,7 @@ export default {
           place: ["富山"],
           taste: ["チューリップ"],
           fee: 380,
-          category: "色々",
+          category: "その他",
           forsearch: ["ちゅーりっぷ"],
           imgUrl: require("@/assets/image/tyu-rip.png"),
         },
@@ -249,6 +240,16 @@ export default {
           category: "ミルク",
           forsearch: ["レンコンソフト", "れんこん"],
           imgUrl: require("@/assets/image/renkon.png"),
+        },
+        {
+          name: "ブルーシールアイス",
+          urlname: "blue",
+          place: ["沖縄"],
+          taste: ["紅イモ"],
+          fee: 330,
+          category: "その他",
+          forsearch: ["ブルーシール"],
+          imgUrl: require("@/assets/image/blue.png"),
         },
       ],
       searchWord: "",
@@ -310,12 +311,13 @@ export default {
 </script>
 <style scoped>
 * {
-  background-color: white;
+  background-color: rgb(255, 240, 240);
 }
 img {
   height: 250px;
   aspect-ratio: 1;
   border-radius: 50%;
+  background-color: white;
 }
 #search-box {
   height: 25px;
@@ -332,23 +334,10 @@ img {
   flex-direction: column;
   margin: 10px;
   border-radius: 30%;
+  text-decoration: none;
 }
 .ice span {
-  background-color: white;
-  border-radius: 50%;
-}
-#search-button {
-  color: #000;
-  background-color: paleturquoise;
-  border-bottom: 5px solid rgb(146, 200, 200);
-  border-radius: 50%;
-  height: 70px;
-  width: 95px;
-}
-
-#search-button:active {
-  color: #000;
-  background: rgb(146, 200, 200);
+  text-decoration: underline rgb(255, 128, 149);
 }
 
 #checkbox-container {
@@ -358,5 +347,8 @@ img {
 }
 .check {
   margin: 10px;
+}
+#item-container span {
+  color: black;
 }
 </style>

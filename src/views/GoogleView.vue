@@ -1,14 +1,16 @@
 <template>
   <div id="container">
     <div id="detail">
+      <li>
+        <h2>{{ items[iceNum].name }}</h2>
+      </li>
+
       <img v-bind:src="items[iceNum].imgUrl" />
-      <ul>
-        <li>{{ items[iceNum].name }}</li>
-        <li>{{ items[iceNum].place[0] }}</li>
-        <li>{{ items[iceNum].fee }}円</li>
-        <li></li>
-        <li></li>
-      </ul>
+      <li>
+        {{ items[iceNum].place[0] }}
+      </li>
+      <li>{{ items[iceNum].fee }}円</li>
+      <li>{{ items[iceNum].taste[0] }}</li>
     </div>
     <div id="google-map" ref="map"></div>
   </div>
@@ -27,7 +29,7 @@ export default {
           name: "金太郎ソフト",
           urlName: "kintarou",
           place: ["神奈川"],
-          taste: "牛乳",
+          taste: ["牛乳"],
           fee: 390,
           category: "ミルク",
           forsearch: "金太郎",
@@ -39,7 +41,7 @@ export default {
           name: "アイスコルネット",
           urlName: "ice_cornet",
           place: ["北海道"],
-          taste: "色々",
+          taste: ["バニラ"],
           fee: 450,
           forsearch: "パン",
           category: "その他",
@@ -49,7 +51,7 @@ export default {
           name: "安曇野りんごソフトクリーム",
           urlName: "azumino",
           place: ["長野", "expasa足柄", "足柄"],
-          taste: "りんご",
+          taste: ["りんご"],
           fee: 330,
           category: "フルーツ",
           forsearch: ["安曇野", "りんごソフト"],
@@ -59,27 +61,17 @@ export default {
           name: "本わさびソフト",
           urlName: "wasabi",
           place: ["山梨", "谷村", "谷村PA"],
-          taste: "わさび",
+          taste: ["わさび"],
           fee: 350,
           category: "和風",
           forsearch: "",
           imgUrl: require("@/assets/image/wasabi.png"),
         },
         {
-          name: "山江村産　栗ジャムソフト",
-          urlName: "kuri",
-          place: ["熊本"],
-          taste: "栗",
-          fee: 410,
-          category: "その他",
-          forsearch: ["山江村", "栗ジャム", "山江村産"],
-          imgUrl: require("@/assets/image/kuri.jpg"),
-        },
-        {
           name: "金箔ソフト",
           urlName: "kinpaku",
           place: ["石川"],
-          taste: "色々",
+          taste: ["バニラ"],
           fee: 891,
           category: "和風",
           forsearch: "金箔",
@@ -89,7 +81,7 @@ export default {
           name: "ラベンダーソフト",
           urlName: "rabenda",
           place: ["北海道"],
-          taste: "ラベンダー",
+          taste: ["ラベンダー"],
           fee: 300,
           category: "フルーツ",
           imgUrl: require("@/assets/image/rabenda.png"),
@@ -98,7 +90,7 @@ export default {
           name: "味道楽ソフトクリーム",
           urlName: "ajidouraku",
           place: ["秋田"],
-          taste: "色々",
+          taste: ["醤油"],
           fee: 330,
           category: "和風",
           forsearch: "味道楽",
@@ -240,6 +232,18 @@ export default {
           forsearch: ["レンコンソフト", "れんこん"],
           imgUrl: require("@/assets/image/renkon.png"),
         },
+        {
+          name: "ブルーシールアイス",
+          urlname: "blue",
+          place: ["沖縄"],
+          taste: ["紅イモ"],
+          fee: 330,
+          category: "その他",
+          forsearch: ["ブルーシール"],
+          imgUrl: require("@/assets/image/blue.png"),
+          lat: 26.330185101243583,
+          lng: 127.75246681188305,
+        },
       ],
     }
   },
@@ -264,28 +268,38 @@ export default {
 }
 </script>
 <style scoped>
+* {
+  background-color: rgb(255, 240, 240);
+}
 #google-map {
   height: 500px;
-  width: 50%;
+  width: 40%;
+  margin: auto;
 }
 #container {
   display: flex;
   width: 100%;
+  height: 100%;
+  padding-bottom: 100px;
 }
 #detail {
-  height: 500px;
+  height: 700px;
   width: 50%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 img {
   width: 40%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background-color: aqua;
+  background-color: white;
   margin: 20px auto;
 }
-ul {
+
+li {
+  width: 100%;
   list-style: none;
+  font-size: large;
 }
 </style>
