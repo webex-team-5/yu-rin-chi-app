@@ -38,7 +38,7 @@
 
   <div id="item-container">
     <div class="ice" v-for="(item, index) in displayItems" v-bind:key="index">
-      <router-link v-bind:to="{ name: 'map', params: { ice: index } }"
+      <router-link v-bind:to="{ name: 'map', params: { ice: item.num } }"
         ><img v-bind:src="item.imgUrl" />
         <span>{{ item.name }}</span></router-link
       >
@@ -306,6 +306,10 @@ export default {
     /* this.items.forEach((item) => {
       console.log(Object.values(item))
     }) */
+
+    for (let i = 0; i < this.items.length; i++) {
+      this.items[i].num = i
+    }
   },
 }
 </script>
