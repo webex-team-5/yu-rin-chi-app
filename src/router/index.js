@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router"
+import IceChart from "@/views/IceChart.vue"
 import HomeView from "@/views/HomeView.vue"
 import GoogleView from "@/views/GoogleView.vue"
 
@@ -21,6 +22,11 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+  },
+  {
+    path: "/icechart",
+    name: "icechart",
+    component: IceChart,
   },
 ]
 const router = createRouter({
