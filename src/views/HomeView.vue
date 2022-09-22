@@ -90,6 +90,6 @@ img:hover {
   height: 500px;
   width: 1000px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 </style>
