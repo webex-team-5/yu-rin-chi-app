@@ -3,16 +3,16 @@
     <nav>
       <ul>
         <li><router-link to="/">page top</router-link> |</li>
-        <li><router-link to="/search">let's ice</router-link> |</li>
-        <li><router-link to="/iceChart">ice-chart</router-link></li>
+        <li><router-link to="/search">let's Ice</router-link> |</li>
+        <li><router-link to="/iceChart">Ice-chart</router-link></li>
       </ul>
     </nav>
   </header>
 </template>
 <style scoped>
 * {
-  color: #e68cb6;
-  background-color: rgb(255, 240, 240);
+  color: #ffbebd;
+  background-color: white;
 }
 ul {
   display: flex;
@@ -21,5 +21,8 @@ ul {
 }
 li {
   margin-left: 20px;
+}
+nav a.router-link-exact-active {
+  color: #1a405f;
 }
 </style>

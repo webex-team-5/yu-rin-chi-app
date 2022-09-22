@@ -45,11 +45,7 @@ export default {
   data() {
     return {
       tastes: ["甘～いアイス", "すっきりしたアイス", "濃厚なアイス"],
-      hows: [
-        "みんな大好き定番の味！",
-        "なんだこれは！ご当地限定アイス！",
-        "オトナなあなたにぜひ...♡",
-      ],
+      hows: ["定番の味！", "ご当地限定アイス！", "オトナなアイス☆"],
       selectedTaste: "",
       selectedHow: "",
       hyoujiURL: "",
@@ -135,12 +131,13 @@ export default {
 <style scoped>
 * {
   color: #1a405f;
-  background-color: #fcfcfa;
+  background-color: #faf5f5;
 }
 /*タイトルデザイン*/
 .title {
   text-align: center;
   font-size: 20px;
+  padding: 20px 0;
 }
 h2 {
   position: relative;
@@ -164,10 +161,6 @@ h2:after {
   right: 0;
 }
 /*選択ボタンデザイン*/
-.is-active {
-  background-color: #337bae;
-  color: white;
-}
 .btn-circle-stitch {
   text-decoration: none;
   width: 230px;
@@ -179,12 +172,20 @@ h2:after {
   box-shadow: 0px 0px 0px 5px #337bae;
   border: dashed 1px #fff;
   margin: 30px;
+  font-size: 20px;
+  background-color: white;
+}
+.is-active {
+  background-color: #337bae;
+  color: white;
 }
 /*質問デザイン*/
 .heading {
   position: relative;
   font-size: 26px;
-  margin-left: 130px;
+  text-align: left;
+  padding: 30px 180px;
+  margin: 0 auto;
 }
 .heading::before {
   content: attr(data-number);
@@ -193,14 +194,6 @@ h2:after {
   color: #ffbebd;
   font-size: 30px;
   border-bottom: 1px solid #ffbebd;
-}
-/*中央寄せ*/
-.taste-container,
-.how-container,
-.result,
-.result-container {
-  text-align: center;
-  width: 100%;
 }
 /*結果表示ボタン*/
 .resultButton {
@@ -214,7 +207,7 @@ h2:after {
   color: #ffbebd;
   transition: 0.3s ease-in-out;
   font-weight: 600;
-  background: #fcfcfa;
+  background-color: white;
   border-radius: 50px;
   border: 0.2rem solid #ffbebd;
   box-shadow: 0.2rem 0.2rem 0px 0.1rem #cccccc;
@@ -237,6 +230,9 @@ h2:after {
   right: 20px;
   border-radius: 1px;
   transition: 0.3s ease-in-out;
+}
+.resultButton a {
+  background-color: white;
 }
 
 .hyoujiURL {
