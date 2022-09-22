@@ -59,7 +59,7 @@ export default {
           fee: 390,
           category: "ミルク",
           forsearch: "金太郎",
-          imgUrl: require("@/assets/image/kintarou.jpg"),
+          imgUrl: require("@/assets/image/kintarouu.jpg"),
         },
         {
           name: "アイスコルネット",
@@ -69,7 +69,7 @@ export default {
           fee: 450,
           forsearch: "パン",
           category: "その他",
-          imgUrl: require("@/assets/image/ice_cornet.png"),
+          imgUrl: require("@/assets/image/ice-cornet.png"),
         },
         {
           name: "安曇野りんごソフトクリーム",
@@ -89,7 +89,7 @@ export default {
           fee: 350,
           category: "和風",
           forsearch: "",
-          imgUrl: require("@/assets/image/wasabi.png"),
+          imgUrl: require("@/assets/image/wasabii.png"),
         },
 
         {
@@ -119,7 +119,7 @@ export default {
           fee: 330,
           category: "和風",
           forsearch: "味道楽",
-          imgUrl: require("@/assets/image/ajidouraku.png"),
+          imgUrl: require("@/assets/image/azi-douraku.png"),
         },
         {
           name: "白い恋人ソフトクリーム",
