@@ -28,12 +28,13 @@
     </button>
   </div>
 
+  <h3 class="heading" data-number="03">あなたにぴったりなアイスは...?</h3>
   <div class="result">
-    <h3 class="heading" data-number="03">あなたにぴったりなアイスは...?</h3>
-    <a href="#" v-on:click="resultButton" class="resultButton"
-      >結果を表示する</a
-    >
-
+    <button v-on:click="resultButton" class="resultButton">
+      <a>結果を見る</a>
+    </button>
+  </div>
+  <div class="result-container">
     <img v-bind:src="hyoujiURL" class="hyoujiURL" />
     {{ text }}
   </div>
@@ -132,6 +133,10 @@ export default {
 </script>
 
 <style scoped>
+* {
+  color: #1a405f;
+  background-color: #fcfcfa;
+}
 /*タイトルデザイン*/
 .title {
   text-align: center;
@@ -160,18 +165,18 @@ h2:after {
 }
 /*選択ボタンデザイン*/
 .is-active {
-  background-color: #fffbb3;
+  background-color: #337bae;
+  color: white;
 }
 .btn-circle-stitch {
   text-decoration: none;
-  color: black;
   width: 230px;
   height: 230px;
   line-height: 120px;
   border-radius: 50%;
   text-align: center;
   overflow: hidden;
-  box-shadow: 0px 0px 0px 5px #fffbb3;
+  box-shadow: 0px 0px 0px 5px #337bae;
   border: dashed 1px #fff;
   margin: 30px;
 }
@@ -185,22 +190,20 @@ h2:after {
   content: attr(data-number);
   display: inline-block;
   margin-right: 20px;
-  color: #f19d85;
+  color: #ffbebd;
   font-size: 30px;
-  border-bottom: 1px solid #f19d85;
+  border-bottom: 1px solid #ffbebd;
 }
 /*中央寄せ*/
-.taste-container {
+.taste-container,
+.how-container,
+.result,
+.result-container {
   text-align: center;
   width: 100%;
 }
-.how-container {
-  text-align: center;
-  widows: 100%;
-}
 /*結果表示ボタン*/
-
-a {
+.resultButton {
   position: relative;
   display: flex;
   justify-content: space-around;
@@ -208,36 +211,34 @@ a {
   margin: 0 auto;
   max-width: 240px;
   padding: 10px 25px;
-  color: black;
-  text-decoration: none;
+  color: #ffbebd;
   transition: 0.3s ease-in-out;
   font-weight: 600;
-  background: #fffbb3;
-  filter: drop-shadow(0px 2px 4px #ccc);
-  border-radius: 3px;
+  background: #fcfcfa;
   border-radius: 50px;
-  overflow: hidden;
+  border: 0.2rem solid #ffbebd;
+  box-shadow: 0.2rem 0.2rem 0px 0.1rem #cccccc;
 }
-a:before {
+.resultButton:hover {
+  transform: translate3d(0.2rem, 0.2rem, 0);
+  box-shadow: none;
+  opacity: 1;
+  transition: all 0.2s;
+}
+.resultButton:after {
   content: "";
-  display: block;
+  width: 5px;
+  height: 5px;
+  border-top: 3px solid #ffbebd;
+  border-right: 3px solid #ffbebd;
+  transform: rotate(45deg) translateY(-50%);
   position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: -100%;
-  background-image: linear-gradient(
-    130deg,
-    rgba(255, 255, 255, 0) 25%,
-    rgba(255, 255, 255, 0.3) 50%,
-    rgba(255, 255, 255, 0) 55%
-  );
-  -webkit-transition: 0.5s;
-  transition: 0.6s;
+  top: 50%;
+  right: 20px;
+  border-radius: 1px;
+  transition: 0.3s ease-in-out;
 }
-a:hover:before {
-  left: 100%;
-}
+
 .hyoujiURL {
   height: 300px;
 }
