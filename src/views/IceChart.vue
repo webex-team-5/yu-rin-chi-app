@@ -1,104 +1,131 @@
 <template>
-  <h1>アイスクリームチャート</h1>
-  <h4>あなたの食べたい味は？？</h4>
-  <div class="container">
-    <div class="circle">
-      <input
-        type="radio"
-        name="q1"
-        value="3"
-        v-model="picked"
-        class="Radio-Input"
-      />
-      <span class="Radio-Text">甘～い</span>
-    </div>
-    <div class="circle">
-      <input
-        type="radio"
-        name="q1"
-        value="2"
-        v-model="picked"
-        class="Radio-Input"
-      /><span class="Radio-Text">すっきり</span>
-    </div>
-    <div class="circle">
-      <input
-        type="radio"
-        name="q1"
-        value="1"
-        v-model="picked"
-        class="Radio-Input"
-      /><span class="Radio-Text">濃厚</span>
-    </div>
+  <div class="title">
+    <h2>アイスクリームチャート</h2>
+  </div>
+  <h3 class="heading" data-number="01">あなたの食べたい味は？？</h3>
+  <div class="taste-container">
+    <button
+      v-on:click="addActive(taste)"
+      v-for="taste in tastes"
+      :key="taste"
+      v-bind:class="{ 'is-active': selectedTaste === taste }"
+      class="btn-circle-stitch"
+    >
+      {{ taste }}
+    </button>
   </div>
 
-  <h4>どんなアイスを食べてみたい？？</h4>
-  <div class="container">
-    <div class="circle">
-      <input
-        type="radio"
-        name="q2"
-        value="20"
-        v-model="wasted"
-        class="Radio-Input"
-      /><span class="Radio-Text">定番！<br />みんなが好きな安定の味</span>
-    </div>
-    <div class="circle">
-      <input
-        type="radio"
-        name="q2"
-        value="10"
-        v-model="wasted"
-        class="Radio-Input"
-      /><span class="Radio-Text">変わり種！<br />ご当地限定のアイス！</span>
-    </div>
-    <div class="circle">
-      <input
-        type="radio"
-        name="q2"
-        value="1"
-        v-model="wasted"
-        class="Radio-Input"
-      /><span class="Radio-Text"
-        >贅沢なおいしさ...<br />オトナなあなたに食べてほしいアイス</span
-      >
-    </div>
+  <h3 class="heading" data-number="02">どんなアイスを食べてみたい？？</h3>
+  <div class="how-container">
+    <button
+      v-on:click="addDetective(how)"
+      v-for="how in hows"
+      :key="how"
+      v-bind:class="{ 'is-active': selectedHow === how }"
+      class="btn-circle-stitch"
+    >
+      {{ how }}
+    </button>
   </div>
-  <button v-on:click="hyouzi">あなたにぴったりなアイスをチェック！</button>
-  <div>{{ text }}</div>
+
+  <h3 class="heading" data-number="03">あなたにぴったりなアイスは...?</h3>
+  <div class="result">
+    <button v-on:click="resultButton" class="resultButton">
+      <a>結果を見る</a>
+    </button>
+  </div>
+  <div class="result-container">
+    <img v-bind:src="hyoujiURL" class="hyoujiURL" />
+    {{ text }}
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
+      tastes: ["甘～いアイス", "すっきりしたアイス", "濃厚なアイス"],
+      hows: [
+        "みんな大好き定番の味！",
+        "なんだこれは！ご当地限定アイス！",
+        "オトナなあなたにぜひ...♡",
+      ],
+      selectedTaste: "",
+      selectedHow: "",
+      hyoujiURL: "",
       text: "",
-      picked: "",
-      wasted: "",
     }
   },
   methods: {
-    hyouzi() {
-      let A = Number(this.picked) + Number(this.wasted)
-      if (A === 23) {
-        this.text = "あなたにぴったりなのは甘くて定番の味のこれです。"
-      } else if (A === 13) {
-        this.text = "あなたにぴったりなのは甘くてご当地限定のこれです。"
-      } else if (A === 4) {
-        this.text = "あなたにぴったりなのは甘くて贅沢な大人のためのアイスです。"
-      } else if (A === 22) {
-        this.text = "あなたにぴったりなのはすっきりした定番のアイスです"
-      } else if (A === 12) {
-        this.text = "あなたにぴったりなのはすっきりしたご当地限定のアイスです"
-      } else if (A === 3) {
-        this.text =
-          "あなたにぴったりなのはすっきりした、でもオトナのためのアイスです"
-      } else if (A === 21) {
-        this.text = "あなたにぴったりなのは濃厚な定番のアイスです"
-      } else if (A === 11) {
-        this.text = "あなたにぴったりなのは濃厚なご当地限定のアイスです"
-      } else if (A === 2) {
-        this.text = "あなたにぴったりなのは濃厚なオトナなアイスです"
+    addActive(taste) {
+      if (this.selectedTaste === taste) {
+        this.selectedTaste = ""
+      } else {
+        this.selectedTaste = taste
+      }
+    },
+    addDetective(how) {
+      if (this.selectedHow === how) {
+        this.selectedHow = ""
+      } else {
+        this.selectedHow = how
+      }
+    },
+    resultButton() {
+      if (
+        this.selectedTaste === this.tastes[0] &&
+        this.selectedHow === this.hows[0]
+      ) {
+        this.hyoujiURL = require("@/assets/image/siroikoibito.jpg")
+        this.text = "白い恋人ソフトクリーム"
+      } else if (
+        this.selectedTaste === this.tastes[0] &&
+        this.selectedHow === this.hows[1]
+      ) {
+        this.hyoujiURL = require("@/assets/image/azuki.png")
+        this.text = "越前塩あずきソフト"
+      } else if (
+        this.selectedTaste === this.tastes[0] &&
+        this.selectedHow === this.hows[2]
+      ) {
+        this.hyoujiURL = require("@/assets/image/ajidouraku.png")
+        this.text = "味どうらくソフト"
+      } else if (
+        this.selectedTaste === this.tastes[1] &&
+        this.selectedHow === this.hows[0]
+      ) {
+        this.hyoujiURL = require("@/assets/image/azumino.png")
+        this.text = "安曇野りんごソフト"
+      } else if (
+        this.selectedTaste === this.tastes[1] &&
+        this.selectedHow === this.hows[1]
+      ) {
+        this.hyoujiURL = require("@/assets/image/rabenda.png")
+        this.text = "ラベンダーソフト"
+      } else if (
+        this.selectedTaste === this.tastes[1] &&
+        this.selectedHow === this.hows[2]
+      ) {
+        this.hyoujiURL = require("@/assets/image/wasabi.png")
+        this.text = "わさびソフト"
+      } else if (
+        this.selectedTaste === this.tastes[2] &&
+        this.selectedHow === this.hows[0]
+      ) {
+        this.hyoujiURL = require("@/assets/image/singen.png")
+        this.text = "元祖信玄ソフト"
+      } else if (
+        this.selectedTaste === this.tastes[2] &&
+        this.selectedHow === this.hows[1]
+      ) {
+        this.hyoujiURL = require("@/assets/image/nanbutyoko.png")
+        this.text = "チョコ南部アイス"
+      } else if (
+        this.selectedTaste === this.tastes[2] &&
+        this.selectedHow === this.hows[2]
+      ) {
+        this.hyoujiURL = require("@/assets/image/kinpaku.jpg")
+        this.text = "金箔ソフト"
       }
     },
   },
@@ -106,69 +133,113 @@ export default {
 </script>
 
 <style scoped>
-/*初期設定*/
 * {
-  box-sizing: border-box;
+  color: #1a405f;
+  background-color: #fcfcfa;
 }
-* {
-  box-sizing: border-box;
+/*タイトルデザイン*/
+.title {
+  text-align: center;
+  font-size: 20px;
 }
-* {
-  box-sizing: border-box;
+h2 {
+  position: relative;
+  display: inline-block;
+  padding: 0 65px;
 }
-/*ラジオボタンを消す*/
-.Radio-Input {
-  appearance: none;
+h2:before,
+h2:after {
   position: absolute;
-}
-/*新しくボタンを作る*/
-.Radio-Text::before {
+  top: calc(50% - 3px);
+  width: 50px;
+  height: 6px;
   content: "";
-  display: block;
-  border-radius: 50%;
-  border: 1px solid orange;
-  width: 16px;
-  height: 16px;
+  border-top: solid 2px #000;
+  border-bottom: solid 2px #000;
 }
-.Radio-Text::after {
-  content: "";
-  position: absolute;
-  left: 4px;
-  display: block;
-  border-radius: 50%;
-  width: 10px;
-  height: 10px;
-  background-color: orange;
+h2:before {
+  left: 0;
 }
-.Radio-Text {
+h2:after {
+  right: 0;
+}
+/*選択ボタンデザイン*/
+.is-active {
+  background-color: #337bae;
+  color: white;
+}
+.btn-circle-stitch {
+  text-decoration: none;
+  width: 230px;
+  height: 230px;
+  line-height: 120px;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 0px 0px 0px 5px #337bae;
+  border: dashed 1px #fff;
+  margin: 30px;
+}
+/*質問デザイン*/
+.heading {
+  position: relative;
+  font-size: 26px;
+  margin-left: 130px;
+}
+.heading::before {
+  content: attr(data-number);
+  display: inline-block;
+  margin-right: 20px;
+  color: #ffbebd;
+  font-size: 30px;
+  border-bottom: 1px solid #ffbebd;
+}
+/*中央寄せ*/
+.taste-container,
+.how-container,
+.result,
+.result-container {
+  text-align: center;
+  width: 100%;
+}
+/*結果表示ボタン*/
+.resultButton {
   position: relative;
   display: flex;
+  justify-content: space-around;
   align-items: center;
+  margin: 0 auto;
+  max-width: 240px;
+  padding: 10px 25px;
+  color: #ffbebd;
+  transition: 0.3s ease-in-out;
+  font-weight: 600;
+  background: #fcfcfa;
+  border-radius: 50px;
+  border: 0.2rem solid #ffbebd;
+  box-shadow: 0.2rem 0.2rem 0px 0.1rem #cccccc;
 }
-.Radio-Input:checked + .Radio-Text::after {
+.resultButton:hover {
+  transform: translate3d(0.2rem, 0.2rem, 0);
+  box-shadow: none;
+  opacity: 1;
+  transition: all 0.2s;
+}
+.resultButton:after {
   content: "";
+  width: 5px;
+  height: 5px;
+  border-top: 3px solid #ffbebd;
+  border-right: 3px solid #ffbebd;
+  transform: rotate(45deg) translateY(-50%);
   position: absolute;
-  left: calc(8px - 5px);
-  display: block;
-  border-radius: 50%;
-  width: 10px;
-  height: 10px;
-  background-color: orange;
+  top: 50%;
+  right: 20px;
+  border-radius: 1px;
+  transition: 0.3s ease-in-out;
 }
-/*円の上に文字を乗せる*/
-.circle {
-  width: 300px;
+
+.hyoujiURL {
   height: 300px;
-  background-color: pink;
-  border-radius: 50%;
-  margin: 0 30px;
-}
-.container {
-  display: flex;
-  justify-content: center;
-}
-.Radio-Text span {
-  text-align: center;
-  line-height: center;
 }
 </style>

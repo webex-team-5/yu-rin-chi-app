@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router"
+import IceChart from "@/views/IceChart.vue"
 import HomeView from "@/views/HomeView.vue"
 import GoogleView from "@/views/GoogleView.vue"
 
@@ -31,10 +32,9 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/SearchView.vue"),
   },
   {
-    path: "/iceChart",
-    name: "iceChart",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/IceChart.vue"),
+    path: "/icechart",
+    name: "icechart",
+    component: IceChart,
   },
 ]
 const router = createRouter({
