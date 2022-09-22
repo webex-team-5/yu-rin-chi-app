@@ -1,6 +1,13 @@
 ＜自動スクロール＞
 <template>
   <div class="home">Let's search icecream!</div>
+  <div class="exp">
+    全国のアイスクリームをご紹介するサイト <br />let's
+    いろんなアイスを見ることができるよ🍨
+    <br />あなたにピッタリなアイスも見つかる！<br />〜使い方〜<br />let's
+    iceのページ＝気になるアイスの画像をタップ <br />ice
+    chartのページ＝ボタンをクリックして 自分に合うアイスを診断しよう！<br />
+  </div>
   <Carousel :items-to-show="2.5" :wrap-around="true">
     <Slide v-for="slide in 10" :key="slide">
       <div class="carousel__item">
@@ -37,7 +44,7 @@ export default {
 .home {
   /* background-color: rgba(251, 138, 217, 0.636); */
   background-image: url(../assets/icetop.png);
-  background-repeat: no-repeat;
+  background-position: 200% 10%;
   font-size: 350%;
   font-weight: bold;
   padding-top: 17%;
@@ -46,6 +53,18 @@ export default {
 
   background-color: #ffada4;
   animation: bg-color 18s infinite;
+}
+img {
+  transition: 1s;
+}
+img:hover {
+  transform: rotateY(180deg);
+}
+.exp {
+  background-color: white;
+  padding-top: 5%;
+  font-size: 20px;
+  font-weight: bold;
 }
 @keyframes bg-color {
   0% {
