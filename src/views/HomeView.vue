@@ -37,6 +37,7 @@ export default {
 .home {
   /* background-color: rgba(251, 138, 217, 0.636); */
   background-image: url(../assets/icetop.png);
+  background-repeat: no-repeat;
   font-size: 350%;
   font-weight: bold;
   padding-top: 17%;
