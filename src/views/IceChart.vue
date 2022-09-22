@@ -2,8 +2,8 @@
   <div class="title">
     <h2>アイスクリームチャート</h2>
   </div>
+  <h3 class="heading" data-number="01">あなたの食べたい味は？？</h3>
   <div class="taste-container">
-    <h3 class="heading" data-number="01">あなたの食べたい味は？？</h3>
     <button
       v-on:click="addActive(taste)"
       v-for="taste in tastes"
@@ -15,8 +15,8 @@
     </button>
   </div>
 
+  <h3 class="heading" data-number="02">どんなアイスを食べてみたい？？</h3>
   <div class="how-container">
-    <h3 class="heading" data-number="02">どんなアイスを食べてみたい？？</h3>
     <button
       v-on:click="addDetective(how)"
       v-for="how in hows"
@@ -30,7 +30,10 @@
 
   <div class="result">
     <h3 class="heading" data-number="03">あなたにぴったりなアイスは...?</h3>
-    <button v-on:click="resultButton">これだ！</button>
+    <a href="#" v-on:click="resultButton" class="resultButton"
+      >結果を表示する</a
+    >
+
     <img v-bind:src="hyoujiURL" class="hyoujiURL" />
     {{ text }}
   </div>
@@ -155,7 +158,7 @@ h2:before {
 h2:after {
   right: 0;
 }
-/*ボタンデザイン*/
+/*選択ボタンデザイン*/
 .is-active {
   background-color: #fffbb3;
 }
@@ -170,12 +173,13 @@ h2:after {
   overflow: hidden;
   box-shadow: 0px 0px 0px 5px #fffbb3;
   border: dashed 1px #fff;
-  margin: 0 auto;
+  margin: 30px;
 }
 /*質問デザイン*/
 .heading {
   position: relative;
   font-size: 26px;
+  margin-left: 130px;
 }
 .heading::before {
   content: attr(data-number);
@@ -185,7 +189,55 @@ h2:after {
   font-size: 30px;
   border-bottom: 1px solid #f19d85;
 }
+/*中央寄せ*/
+.taste-container {
+  text-align: center;
+  width: 100%;
+}
+.how-container {
+  text-align: center;
+  widows: 100%;
+}
+/*結果表示ボタン*/
 
+a {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 240px;
+  padding: 10px 25px;
+  color: black;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+  font-weight: 600;
+  background: #fffbb3;
+  filter: drop-shadow(0px 2px 4px #ccc);
+  border-radius: 3px;
+  border-radius: 50px;
+  overflow: hidden;
+}
+a:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: -100%;
+  background-image: linear-gradient(
+    130deg,
+    rgba(255, 255, 255, 0) 25%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 55%
+  );
+  -webkit-transition: 0.5s;
+  transition: 0.6s;
+}
+a:hover:before {
+  left: 100%;
+}
 .hyoujiURL {
   height: 300px;
 }
