@@ -5,9 +5,9 @@
 </template>
 <style scoped>
 footer {
-  background-color: #e68cb6;
+  background-color: #ffbebd;
 
-  color: rgb(0, 0, 0);
+  color: #1a405f;
   padding: 20px 0px;
   margin-top: 0px;
 }
