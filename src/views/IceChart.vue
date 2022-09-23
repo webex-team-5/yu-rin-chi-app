@@ -33,14 +33,20 @@
     <button v-on:click="resultButton" class="resultButton">
       <a>結果を見る</a>
     </button>
-  </div>
-  <div class="result-container">
-    <img v-bind:src="hyoujiURL" class="hyoujiURL" />
-    {{ name }}
-    {{ place }}
-    {{ fee }}
-    {{ taste }}
-    {{ text }}
+    <div class="result-container">
+      <div class="hyoujiURL">
+        <img v-bind:src="hyoujiURL" />
+      </div>
+      <div class="information">
+        <h2 class="result-name">{{ name }}</h2>
+        <div class="detail">
+          <li>📍{{ place }}</li>
+          <li>🪙{{ fee }}</li>
+          <li>🍦{{ taste }}</li>
+        </div>
+        <li class="explain-text">{{ text }}</li>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -107,7 +113,7 @@ export default {
         this.place = "秋田"
         this.taste = "醤油"
         ;(this.text =
-          "味どうらく」は秋田県民におなじみのめんつゆです。醬油ベースの出汁の塩辛い味の後に、アイス本来の奄美が広がり、甘じょっぱさに病みつきになる人もいるのだとか...!"),
+          "「味どうらく」は秋田県民におなじみのめんつゆです。醬油ベースの出汁の塩辛い味の後に、アイス本来の奄美が広がり、甘じょっぱさに病みつきになる人もいるのだとか...!"),
           (this.fee = 300)
       } else if (
         this.selectedTaste === this.tastes[1] &&
@@ -289,7 +295,47 @@ h2:after {
   background-color: white;
 }
 
+.result-container {
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
+}
 .hyoujiURL {
+  width: 50%;
+}
+.information {
+  width: 50%;
+}
+.hyoujiURL img {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: white;
+  margin: 20px auto;
+  border: 5px solid #ffbebd;
   height: 300px;
+  float: right;
+}
+li {
+  width: 100%;
+  list-style: none;
+  font-size: large;
+  padding-left: 20px;
+  line-height: 40px;
+}
+.result-name {
+  margin: 20px 0 20px 60px;
+  float: left;
+}
+.detail {
+  display: flex;
+  padding: 15px 0;
+  width: 70%;
+  margin: 0 auto;
+  float: left;
+}
+.explain-text {
+  width: 70%;
+  margin: 0 auto;
+  float: left;
 }
 </style>
