@@ -11,8 +11,9 @@
 </template>
 <style scoped>
 * {
-  color: #1a405f;
+  color: white;
   background-color: #ffbebd;
+  text-decoration: none;
 }
 ul {
   display: flex;
@@ -23,6 +24,7 @@ li {
   margin-left: 20px;
 }
 nav a.router-link-exact-active {
-  color: #1a405f;
+  color: white;
+  text-decoration: underline;
 }
 </style>

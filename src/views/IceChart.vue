@@ -33,10 +33,20 @@
     <button v-on:click="resultButton" class="resultButton">
       <a>結果を見る</a>
     </button>
-  </div>
-  <div class="result-container">
-    <img v-bind:src="hyoujiURL" class="hyoujiURL" />
-    {{ text }}
+    <div class="result-container">
+      <div class="hyoujiURL">
+        <img v-bind:src="hyoujiURL" />
+      </div>
+      <div class="information">
+        <h2 class="result-name">{{ name }}</h2>
+        <div class="detail">
+          <li>📍{{ place }}</li>
+          <li>🪙{{ fee }}</li>
+          <li>🍦{{ taste }}</li>
+        </div>
+        <li class="explain-text">{{ text }}</li>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -49,6 +59,10 @@ export default {
       selectedTaste: "",
       selectedHow: "",
       hyoujiURL: "",
+      name: "",
+      place: "",
+      fee: "",
+      taste: "",
       text: "",
     }
   },
@@ -73,55 +87,100 @@ export default {
         this.selectedHow === this.hows[0]
       ) {
         this.hyoujiURL = require("@/assets/image/siroikoibito.jpg")
-        this.text = "白い恋人ソフトクリーム"
+        this.name = "白い恋人ソフトクリーム"
+        this.place = "北海道"
+        this.taste = "ホワイトチョコ"
+        ;(this.text =
+          "北海道産の生乳と「白い恋人」のチョコレートが合わさり、あっさりとした中にもコクのある味わいです"),
+          (this.fee = 400)
       } else if (
         this.selectedTaste === this.tastes[0] &&
         this.selectedHow === this.hows[1]
       ) {
         this.hyoujiURL = require("@/assets/image/azuki.png")
-        this.text = "越前塩あずきソフト"
+        this.name = "越前塩あずきソフト"
+        this.place = "福井"
+        this.taste = "あずき"
+        ;(this.text =
+          "特産の越前塩を使用し塩のしょっぱさとあずきのほんのりした甘さが絶妙にマッチ♪ 病み付きになる美味しさです。甘いモノ苦手な方も食べられそうです。"),
+          (this.fee = 300)
       } else if (
         this.selectedTaste === this.tastes[0] &&
         this.selectedHow === this.hows[2]
       ) {
         this.hyoujiURL = require("@/assets/image/ajidouraku.png")
-        this.text = "味どうらくソフト"
+        this.name = "味どうらくソフト"
+        this.place = "秋田"
+        this.taste = "醤油"
+        ;(this.text =
+          "「味どうらく」は秋田県民におなじみのめんつゆです。醬油ベースの出汁の塩辛い味の後に、アイス本来の奄美が広がり、甘じょっぱさに病みつきになる人もいるのだとか...!"),
+          (this.fee = 300)
       } else if (
         this.selectedTaste === this.tastes[1] &&
         this.selectedHow === this.hows[0]
       ) {
         this.hyoujiURL = require("@/assets/image/azumino.png")
-        this.text = "安曇野りんごソフト"
+        this.name = "安曇野りんごソフト"
+        this.place = "長野"
+        this.taste = "りんご"
+        ;(this.text =
+          "安曇野産のリンゴを使用し、ひと口目から爽やかなリンゴの風味です。シャーベットのようなおいしさも感じられます"),
+          (this.fee = 330)
       } else if (
         this.selectedTaste === this.tastes[1] &&
         this.selectedHow === this.hows[1]
       ) {
         this.hyoujiURL = require("@/assets/image/rabenda.png")
-        this.text = "ラベンダーソフト"
+        this.name = "ラベンダーソフト"
+        this.place = "北海道"
+        this.taste = "ラベンダー"
+        ;(this.text =
+          "ラベンダーエキス入りのオリジナルソフトクリームです。さっぱりしているので暑い日にもおいしく食べられます"),
+          (this.fee = 300)
       } else if (
         this.selectedTaste === this.tastes[1] &&
         this.selectedHow === this.hows[2]
       ) {
         this.hyoujiURL = require("@/assets/image/wasabi.png")
-        this.text = "わさびソフト"
+        this.name = "わさびソフト"
+        this.place = "山梨"
+        this.taste = "わさび"
+        ;(this.text =
+          "空気と水のきれいな場所で採れるわさび。信州では安曇野が有名です。わさびソフトは、生乳ベースのソフトクリームにほんのりわさびが香るさわやかなおいしさで、リピーター続出です。"),
+          (this.fee = 350)
       } else if (
         this.selectedTaste === this.tastes[2] &&
         this.selectedHow === this.hows[0]
       ) {
         this.hyoujiURL = require("@/assets/image/singen.png")
-        this.text = "元祖信玄ソフト"
+        this.name = "元祖信玄ソフト"
+        this.place = "山梨"
+        this.taste = "きなこ、黒蜜"
+        ;(this.text =
+          "濃厚なバニラソフトの上に、老舗金精軒の極上生信玄餅を3個トッピング。山梨県産の米100％で作られた餅はモッチモチ！"),
+          (this.fee = 390)
       } else if (
         this.selectedTaste === this.tastes[2] &&
         this.selectedHow === this.hows[1]
       ) {
         this.hyoujiURL = require("@/assets/image/nanbutyoko.png")
-        this.text = "チョコ南部アイス"
+        this.name = "チョコ南部アイス"
+        this.place = "岩手"
+        this.taste = "チョコ"
+        ;(this.text =
+          "岩手県や青森県等のお土産品として定番の南部せんべいを使ったチョコレートアイスクリームです。アイス好きの間で有名だそうです。"),
+          (this.fee = 410)
       } else if (
         this.selectedTaste === this.tastes[2] &&
         this.selectedHow === this.hows[2]
       ) {
         this.hyoujiURL = require("@/assets/image/kinpaku.jpg")
-        this.text = "金箔ソフト"
+        this.name = "金箔ソフト"
+        this.place = "石川"
+        this.taste = "バニラ"
+        ;(this.text =
+          "金箔の街、金沢では金箔一枚を大胆に乗せたアイスクリームが食べられます。「箔一」というお店では名前にちなんで891(ハクイチ)で味わえます。"),
+          (this.fee = 891)
       }
     },
   },
@@ -236,7 +295,47 @@ h2:after {
   background-color: white;
 }
 
+.result-container {
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
+}
 .hyoujiURL {
+  width: 50%;
+}
+.information {
+  width: 50%;
+}
+.hyoujiURL img {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: white;
+  margin: 20px auto;
+  border: 5px solid #ffbebd;
   height: 300px;
+  float: right;
+}
+li {
+  width: 100%;
+  list-style: none;
+  font-size: large;
+  padding-left: 20px;
+  line-height: 40px;
+}
+.result-name {
+  margin: 20px 0 20px 60px;
+  float: left;
+}
+.detail {
+  display: flex;
+  padding: 15px 0;
+  width: 70%;
+  margin: 0 auto;
+  float: left;
+}
+.explain-text {
+  width: 70%;
+  margin: 0 auto;
+  float: left;
 }
 </style>
