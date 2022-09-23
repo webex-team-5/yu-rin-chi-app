@@ -50,6 +50,8 @@ export default {
           forsearch: "パン",
           category: "その他",
           imgUrl: require("@/assets/image/ice-cornet.png"),
+          lat: 35.36733459122897,
+          lng: 139.54589668875133,
         },
         {
           name: "安曇野りんごソフトクリーム",
@@ -61,6 +63,8 @@ export default {
           category: "フルーツ",
           forsearch: ["安曇野", "りんごソフト"],
           imgUrl: require("@/assets/image/azumino.png"),
+          lat: 36.34064489226944,
+          lng: 137.84155018256845,
         },
         {
           name: "本わさびソフト",
@@ -71,7 +75,9 @@ export default {
           fee: 350,
           category: "和風",
           forsearch: "",
-          imgUrl: require("@/assets/image/wasabii.png"),
+          imgUrl: require("@/assets/image/wasabi.png"),
+          lat: 36.33971269081125,
+          lng: 137.90866526907448,
         },
         {
           name: "金箔ソフト",
@@ -83,6 +89,8 @@ export default {
           category: "和風",
           forsearch: "金箔",
           imgUrl: require("@/assets/image/kinpaku.jpg"),
+          lat: 36.573159999763966,
+          lng: 136.66629982814024,
         },
         {
           name: "ラベンダーソフト",
@@ -93,6 +101,8 @@ export default {
           fee: 300,
           category: "フルーツ",
           imgUrl: require("@/assets/image/rabenda.png"),
+          lat: 43.41895066162121,
+          lng: 142.42791195281586,
         },
         {
           name: "味道楽ソフトクリーム",
@@ -104,6 +114,8 @@ export default {
           category: "和風",
           forsearch: "味道楽",
           imgUrl: require("@/assets/image/azi-douraku.png"),
+          lat: 39.52207530385149,
+          lng: 140.37664185380163,
         },
         {
           name: "白い恋人ソフトクリーム",
@@ -219,6 +231,8 @@ export default {
           category: "色々",
           forsearch: ["ちゅーりっぷ"],
           imgUrl: require("@/assets/image/tyu-rip.png"),
+          lat: 36.73573451709186,
+          lng: 136.94285759672925,
         },
         {
           name: "越前塩あずきソフト",
@@ -230,6 +244,8 @@ export default {
           category: "和風",
           forsearch: "",
           imgUrl: require("@/assets/image/azuki.png"),
+          lat: 35.924586759280814,
+          lng: 135.99796819790143,
         },
         {
           name: "いかすみソフト",
@@ -241,6 +257,8 @@ export default {
           category: "和風",
           forsearch: ["イカ墨", "イカスミ"],
           imgUrl: require("@/assets/image/ikasumi.png"),
+          lat: 34.88025540978413,
+          lng: 138.30314519788058,
         },
         {
           name: "レンコンソフトクリーム",
@@ -252,6 +270,8 @@ export default {
           category: "ミルク",
           forsearch: ["レンコンソフト", "れんこん"],
           imgUrl: require("@/assets/image/renkon.png"),
+          lat: 35.14446509454743,
+          lng: 136.69451489603838,
         },
         {
           name: "ブルーシールアイス",

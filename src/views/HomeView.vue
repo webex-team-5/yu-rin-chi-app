@@ -15,7 +15,7 @@
         <slide> <img src="../assets/rabenda.png" /> </slide>
         <slide> <img src="../assets/renkon.png" /> </slide>
         <slide> <img src="../assets/tyu-rip.png" /> </slide>
-        <slide> <img src="../assets/wasabi.png" /> </slide>
+        <slide> <img src="../assets/image/wasabi.png" /> </slide>
       </div>
     </Slide>
 
