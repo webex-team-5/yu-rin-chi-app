@@ -6,7 +6,8 @@
       v-model="searchWord"
       @input="searching"
       v-on:keydown.enter="searchButton"
-      placeholder="Search Icecream!"
+      placeholder="キーワード検索"
+      class="search-box"
     />
     <form>
       <input
@@ -15,7 +16,7 @@
         v-on:keydown.enter="searchButton"
         min="0"
         max="1000"
-        class="range"
+        style="accent-color: #337bae"
       /><label><br />¥{{ rangeBar }}以内</label>
     </form>
     <div id="checkbox-container">
@@ -316,8 +317,17 @@ export default {
 * {
   background-color: #fcefef;
 }
-.range {
-  color: #337bae;
+
+#checkbox-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  padding-top: 8px;
+  padding-bottom: 13px;
+}
+.check {
+  margin: 10px;
+  font-size: 15px;
 }
 /*検索結果表示ボタンのデザイン*/
 .resultButton {
@@ -370,13 +380,18 @@ img {
 }
 #search-box {
   height: 25px;
-  color: black;
+  border-color: #337bae;
+  padding: 5px 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
+
 #item-container {
   width: 100%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  margin: 0 20px;
 }
 #item-container span {
   padding-top: 12px;
@@ -394,14 +409,6 @@ img {
 }
 .ice span {
   color: #1a405f;
-}
-
-#checkbox-container {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-}
-.check {
-  margin: 10px;
+  font-size: 20px;
 }
 </style>
