@@ -360,11 +360,13 @@ export default {
 }
 
 img {
+  width: 250px;
   height: 250px;
   aspect-ratio: 1;
   border-radius: 50%;
   background-color: white;
   border: 3px solid #ffbebd;
+  margin: 20px auto;
 }
 #search-box {
   height: 25px;
@@ -378,6 +380,10 @@ img {
 }
 #item-container span {
   padding-top: 12px;
+}
+.ice {
+  width: 33%;
+  height: auto;
 }
 .ice a {
   display: flex;
