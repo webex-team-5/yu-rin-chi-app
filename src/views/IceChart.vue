@@ -2,7 +2,7 @@
   <div class="title">
     <h2>アイスクリームチャート</h2>
   </div>
-  <h3 class="heading" data-number="01">あなたの食べたい味は？？</h3>
+  <h3 class="heading" data-number="01">あなたの食べたい味は？</h3>
   <div class="taste-container">
     <button
       v-on:click="addActive(taste)"
@@ -15,7 +15,7 @@
     </button>
   </div>
 
-  <h3 class="heading" data-number="02">どんなアイスを食べてみたい？？</h3>
+  <h3 class="heading" data-number="02">どんなアイスを食べてみたい？</h3>
   <div class="how-container">
     <button
       v-on:click="addDetective(how)"
@@ -307,10 +307,12 @@ h2:after {
   width: 100%;
 }
 .hyoujiURL {
-  width: 50%;
+  width: 45%;
+  padding-top: 30px;
 }
 .information {
-  width: 50%;
+  width: 55%;
+  padding-top: 70px;
 }
 .hyoujiURL img {
   aspect-ratio: 1;
@@ -329,8 +331,8 @@ li {
   line-height: 40px;
 }
 .result-name {
-  margin: 20px 0 20px 60px;
   float: left;
+  margin-left: 80px;
 }
 .detail {
   display: flex;
