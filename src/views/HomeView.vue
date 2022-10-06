@@ -2,11 +2,11 @@
 <template>
   <div class="home">Let's search icecream!</div>
   <div class="exp">
-    全国のアイスクリームをご紹介するサイト <br />let's
-    いろんなアイスを見ることができるよ🍨
-    <br />あなたにピッタリなアイスも見つかる！<br />〜使い方〜<br />let's
-    iceのページ＝気になるアイスの画像をタップ <br />ice
-    chartのページ＝ボタンをクリックして 自分に合うアイスを診断しよう！<br />
+    全国のアイスクリームをご紹介するサイト <br /><br />
+    let's iceでいろんなアイスを見ることができるよ🍨<br />
+    ice chartではあなたにピッタリなアイスも見つかる！<br /><br />
+    これを見ればきっとアイスが食べたくなるはず！！<br />
+    いろいろなアイスを食べに出かけてみよう！
   </div>
   <Carousel :items-to-show="2.5" :wrap-around="true">
     <Slide v-for="slide in 10" :key="slide">
