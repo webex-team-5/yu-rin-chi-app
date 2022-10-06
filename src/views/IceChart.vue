@@ -33,7 +33,7 @@
     <button v-on:click="resultButton" class="resultButton">
       <a>結果を見る</a>
     </button>
-    <div class="result-container">
+    <div v-show="isShow" class="result-container">
       <div class="hyoujiURL">
         <img v-bind:src="hyoujiURL" />
       </div>
@@ -58,6 +58,7 @@ export default {
       hows: ["定番の味！", "ご当地限定アイス！", "オトナなアイス☆"],
       selectedTaste: "",
       selectedHow: "",
+      isShow: false,
       hyoujiURL: "",
       name: "",
       place: "",
@@ -82,6 +83,7 @@ export default {
       }
     },
     resultButton() {
+      this.isShow = !this.isShow
       if (
         this.selectedTaste === this.tastes[0] &&
         this.selectedHow === this.hows[0]
@@ -108,7 +110,7 @@ export default {
         this.selectedTaste === this.tastes[0] &&
         this.selectedHow === this.hows[2]
       ) {
-        this.hyoujiURL = require("@/assets/image/ajidouraku.png")
+        this.hyoujiURL = require("@/assets/image/azi-douraku.png")
         this.name = "味どうらくソフト"
         this.place = "秋田"
         this.taste = "醤油"
@@ -196,7 +198,8 @@ export default {
 .title {
   text-align: center;
   font-size: 20px;
-  padding: 20px 0;
+  padding-top: 40px;
+  padding-bottom: 20px;
 }
 h2 {
   position: relative;
@@ -256,6 +259,9 @@ h2:after {
   border-bottom: 1px solid #ffbebd;
 }
 /*結果表示ボタン*/
+.result {
+  padding-bottom: 40px;
+}
 .resultButton {
   position: relative;
   display: flex;
@@ -294,7 +300,7 @@ h2:after {
 .resultButton a {
   background-color: white;
 }
-
+/*結果内容*/
 .result-container {
   display: flex;
   margin: 0 auto;
