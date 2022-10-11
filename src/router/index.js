@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router"
 import IceChart from "@/views/IceChart.vue"
 import HomeView from "@/views/HomeView.vue"
 import GoogleView from "@/views/GoogleView.vue"
+import GoogleMap from "@/views/GoogleMap.vue"
 
 const routes = [
   {
@@ -35,6 +36,11 @@ const routes = [
     path: "/icechart",
     name: "icechart",
     component: IceChart,
+  },
+  {
+    path: "/GoogleMap",
+    name: "GoogleMap",
+    component: GoogleMap,
   },
 ]
 const router = createRouter({

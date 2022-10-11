@@ -2,9 +2,10 @@
   <header>
     <nav>
       <ul>
-        <li><router-link to="/">page top</router-link> |</li>
-        <li><router-link to="/search">let's Ice</router-link> |</li>
+        <li><router-link to="/">page top</router-link></li>
+        <li><router-link to="/search">let's Ice</router-link></li>
         <li><router-link to="/iceChart">Ice-chart</router-link></li>
+        <li><router-link to="/GoogleMap">Map</router-link></li>
       </ul>
     </nav>
   </header>

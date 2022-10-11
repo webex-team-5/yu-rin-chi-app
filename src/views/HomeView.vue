@@ -1,11 +1,13 @@
 ＜自動スクロール＞
+
 <template>
   <div class="home">Let's search icecream!</div>
   <div class="exp">
     全国のアイスクリームをご紹介するサイト <br /><br />
     let's iceでいろんなアイスを見ることができるよ🍨<br />
     ice chartではあなたにピッタリなアイスも見つかる！<br /><br />
-    これを見ればきっとアイスが食べたくなるはず！！<br />
+    日本中にはとってもすてきなアイスがたくさんあります。<br />
+    きっと見ているうちにアイスがたべたくなってきます🤤<br />
     いろいろなアイスを食べに出かけてみよう！
   </div>
   <Carousel :items-to-show="2.5" :wrap-around="true">
@@ -15,7 +17,6 @@
         <slide> <img src="../assets/rabenda.png" /> </slide>
         <slide> <img src="../assets/renkon.png" /> </slide>
         <slide> <img src="../assets/tyu-rip.png" /> </slide>
-        <slide> <img src="../assets/image/wasabi.png" /> </slide>
       </div>
     </Slide>
 
