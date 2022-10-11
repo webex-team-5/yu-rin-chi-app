@@ -1,7 +1,7 @@
 ＜自動スクロール＞
 
 <template>
-  <div class="home">Let's search icecream!</div>
+  <div class="home">Let's Search Icecream!</div>
   <div class="exp">
     全国のアイスクリームをご紹介するサイト <br /><br />
     let's iceでいろんなアイスを見ることができるよ🍨<br />
