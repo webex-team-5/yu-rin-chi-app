@@ -2,7 +2,7 @@
   <div class="title">
     <h2>アイスクリームチャート</h2>
   </div>
-  <h3 class="heading" data-number="01">あなたの食べたい味は？？</h3>
+  <h3 class="heading" data-number="01">あなたの食べたい味は？</h3>
   <div class="taste-container">
     <button
       v-on:click="addActive(taste)"
@@ -15,7 +15,7 @@
     </button>
   </div>
 
-  <h3 class="heading" data-number="02">どんなアイスを食べてみたい？？</h3>
+  <h3 class="heading" data-number="02">どんなアイスを食べてみたい？</h3>
   <div class="how-container">
     <button
       v-on:click="addDetective(how)"
@@ -33,7 +33,7 @@
     <button v-on:click="resultButton" class="resultButton">
       <a>結果を見る</a>
     </button>
-    <div class="result-container">
+    <div v-show="isShow" class="result-container">
       <div class="hyoujiURL">
         <img v-bind:src="hyoujiURL" />
       </div>
@@ -58,6 +58,7 @@ export default {
       hows: ["定番の味！", "ご当地限定アイス！", "オトナなアイス☆"],
       selectedTaste: "",
       selectedHow: "",
+      isShow: false,
       hyoujiURL: "",
       name: "",
       place: "",
@@ -82,6 +83,7 @@ export default {
       }
     },
     resultButton() {
+      this.isShow = !this.isShow
       if (
         this.selectedTaste === this.tastes[0] &&
         this.selectedHow === this.hows[0]
@@ -91,7 +93,7 @@ export default {
         this.place = "北海道"
         this.taste = "ホワイトチョコ"
         ;(this.text =
-          "北海道産の生乳と「白い恋人」のチョコレートが合わさり、あっさりとした中にもコクのある味わいです"),
+          "定番のお土産、白い恋人！北海道産の生乳と「白い恋人」のチョコレートが合わさり、あっさりとした中にもコクのある味わいです。"),
           (this.fee = 400)
       } else if (
         this.selectedTaste === this.tastes[0] &&
@@ -102,18 +104,18 @@ export default {
         this.place = "福井"
         this.taste = "あずき"
         ;(this.text =
-          "特産の越前塩を使用し塩のしょっぱさとあずきのほんのりした甘さが絶妙にマッチ♪ 病み付きになる美味しさです。甘いモノ苦手な方も食べられそうです。"),
+          "特産の越前塩を使用し塩のしょっぱさとあずきのほんのりした甘さが絶妙にマッチ♪ 病み付きになる美味しさです。甘いモノが苦手な方も食べられそうですね。"),
           (this.fee = 300)
       } else if (
         this.selectedTaste === this.tastes[0] &&
         this.selectedHow === this.hows[2]
       ) {
-        this.hyoujiURL = require("@/assets/image/ajidouraku.png")
+        this.hyoujiURL = require("@/assets/image/azi-douraku.png")
         this.name = "味どうらくソフト"
         this.place = "秋田"
         this.taste = "醤油"
         ;(this.text =
-          "「味どうらく」は秋田県民におなじみのめんつゆです。醬油ベースの出汁の塩辛い味の後に、アイス本来の奄美が広がり、甘じょっぱさに病みつきになる人もいるのだとか...!"),
+          "「味どうらく」は秋田県民におなじみのめんつゆです。醬油ベースの出汁の塩辛い味の後に、アイス本来の甘みが広がり、甘じょっぱさに病みつきになる人もいるのだとか...!"),
           (this.fee = 300)
       } else if (
         this.selectedTaste === this.tastes[1] &&
@@ -135,7 +137,7 @@ export default {
         this.place = "北海道"
         this.taste = "ラベンダー"
         ;(this.text =
-          "ラベンダーエキス入りのオリジナルソフトクリームです。さっぱりしているので暑い日にもおいしく食べられます"),
+          "ラベンダーエキス入りのオリジナルソフトクリームです。さっぱりしているので暑い日にもおいしく食べられますよ☆"),
           (this.fee = 300)
       } else if (
         this.selectedTaste === this.tastes[1] &&
@@ -146,7 +148,7 @@ export default {
         this.place = "山梨"
         this.taste = "わさび"
         ;(this.text =
-          "空気と水のきれいな場所で採れるわさび。信州では安曇野が有名です。わさびソフトは、生乳ベースのソフトクリームにほんのりわさびが香るさわやかなおいしさで、リピーター続出です。"),
+          "空気と水のきれいな場所で採れるわさび。信州では安曇野が有名です。わさびソフトは、生乳ベースのソフトクリームにほんのりわさびが香るさわやかなおいしさで、リピーター続出です！"),
           (this.fee = 350)
       } else if (
         this.selectedTaste === this.tastes[2] &&
@@ -168,7 +170,7 @@ export default {
         this.place = "岩手"
         this.taste = "チョコ"
         ;(this.text =
-          "岩手県や青森県等のお土産品として定番の南部せんべいを使ったチョコレートアイスクリームです。アイス好きの間で有名だそうです。"),
+          "岩手県や青森県等のお土産品として定番の南部せんべいを使ったチョコレートアイスクリームです。アイス好きの間で有名なんだとか！"),
           (this.fee = 410)
       } else if (
         this.selectedTaste === this.tastes[2] &&
@@ -179,7 +181,7 @@ export default {
         this.place = "石川"
         this.taste = "バニラ"
         ;(this.text =
-          "金箔の街、金沢では金箔一枚を大胆に乗せたアイスクリームが食べられます。「箔一」というお店では名前にちなんで891(ハクイチ)で味わえます。"),
+          "金箔の街、金沢では金箔一枚を大胆に乗せたアイスクリームが食べられます。「箔一」というお店ではその名にちなんで891(ハクイチ)で味わえます。"),
           (this.fee = 891)
       }
     },
@@ -196,7 +198,8 @@ export default {
 .title {
   text-align: center;
   font-size: 20px;
-  padding: 20px 0;
+  padding-top: 40px;
+  padding-bottom: 20px;
 }
 h2 {
   position: relative;
@@ -256,6 +259,9 @@ h2:after {
   border-bottom: 1px solid #ffbebd;
 }
 /*結果表示ボタン*/
+.result {
+  padding-bottom: 40px;
+}
 .resultButton {
   position: relative;
   display: flex;
@@ -294,17 +300,19 @@ h2:after {
 .resultButton a {
   background-color: white;
 }
-
+/*結果内容*/
 .result-container {
   display: flex;
   margin: 0 auto;
   width: 100%;
 }
 .hyoujiURL {
-  width: 50%;
+  width: 45%;
+  padding-top: 30px;
 }
 .information {
-  width: 50%;
+  width: 55%;
+  padding-top: 70px;
 }
 .hyoujiURL img {
   aspect-ratio: 1;
@@ -323,8 +331,8 @@ li {
   line-height: 40px;
 }
 .result-name {
-  margin: 20px 0 20px 60px;
   float: left;
+  margin-left: 80px;
 }
 .detail {
   display: flex;

@@ -1,6 +1,5 @@
 <template>
   <Header></Header>
-
   <router-view />
   <Footer></Footer>
 </template>
@@ -16,8 +15,10 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Kaisei+Decol&display=swap");
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Kaisei Decol", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
