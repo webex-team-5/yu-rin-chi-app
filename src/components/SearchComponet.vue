@@ -42,7 +42,7 @@
 
   <div id="item-container">
     <div class="ice" v-for="(item, index) in displayItems" v-bind:key="index">
-      <router-link v-bind:to="{ name: 'map', params: { ice: index } }"
+      <router-link v-bind:to="{ name: 'map', params: { ice: item.number } }"
         ><img v-bind:src="item.imgUrl" />
         <span>{{ item.name }}</span></router-link
       >
@@ -64,6 +64,7 @@ export default {
           category: "ミルク",
           forsearch: "金太郎",
           imgUrl: require("@/assets/image/kintarouu.jpg"),
+          number: 0,
         },
         {
           name: "アイスコルネット",
@@ -74,6 +75,7 @@ export default {
           forsearch: "パン",
           category: "その他",
           imgUrl: require("@/assets/image/ice-cornet.png"),
+          number: 1,
         },
         {
           name: "安曇野りんごソフトクリーム",
@@ -84,6 +86,7 @@ export default {
           category: "フルーツ",
           forsearch: ["安曇野", "りんごソフト"],
           imgUrl: require("@/assets/image/azumino.png"),
+          number: 2,
         },
         {
           name: "本わさびソフト",
@@ -94,6 +97,7 @@ export default {
           category: "和風",
           forsearch: "",
           imgUrl: require("@/assets/image/wasabii.png"),
+          number: 3,
         },
 
         {
@@ -105,6 +109,7 @@ export default {
           category: "和風",
           forsearch: "金箔",
           imgUrl: require("@/assets/image/kinpaku.jpg"),
+          number: 4,
         },
         {
           name: "ラベンダーソフト",
@@ -114,6 +119,7 @@ export default {
           fee: 300,
           category: "フルーツ",
           imgUrl: require("@/assets/image/rabenda.png"),
+          number: 5,
         },
         {
           name: "味道楽ソフトクリーム",
@@ -124,6 +130,7 @@ export default {
           category: "和風",
           forsearch: "味道楽",
           imgUrl: require("@/assets/image/azi-douraku.png"),
+          number: 6,
         },
         {
           name: "白い恋人ソフトクリーム",
@@ -134,6 +141,7 @@ export default {
           category: "ミルク",
           forsearch: "白い恋人",
           imgUrl: require("@/assets/image/siroikoibito.jpg"),
+          number: 7,
         },
         {
           name: "チョコ南部アイス",
@@ -144,6 +152,7 @@ export default {
           category: "ミルク",
           forsearch: "南部せんべい",
           imgUrl: require("@/assets/image/nanbutyoko.png"),
+          number: 8,
         },
         {
           name: "ババヘラアイス",
@@ -154,6 +163,7 @@ export default {
           category: "フルーツ",
           forsearch: "ババヘラ",
           imgUrl: require("@/assets/image/babahera.png"),
+          number: 9,
         },
         {
           name: "殿様のだだちゃ豆アイスクリーム",
@@ -164,6 +174,7 @@ export default {
           category: "ミルク",
           forsearch: ["ただちゃ豆", "殿様", "殿様アイス"],
           imgUrl: require("@/assets/image/tadatyamame.png"),
+          number: 10,
         },
         {
           name: "酪王カフェオレソフトクリーム",
@@ -174,6 +185,7 @@ export default {
           category: "ミルク",
           forsearch: ["酪王"],
           imgUrl: require("@/assets/image/cafe.png"),
+          number: 11,
         },
         {
           name: "元祖信玄ソフト",
@@ -184,6 +196,7 @@ export default {
           category: "ミルク",
           forsearch: ["信玄餅", "元祖"],
           imgUrl: require("@/assets/image/singen.png"),
+          number: 12,
         },
         {
           name: "仁王門屋の元祖そばソフトクリーム",
@@ -194,6 +207,7 @@ export default {
           category: "和風",
           forsearch: ["信玄餅", "元祖"],
           imgUrl: require("@/assets/image/soba.png"),
+          number: 13,
         },
         {
           name: "セイヒョーもも太郎",
@@ -204,6 +218,7 @@ export default {
           category: "フルーツ",
           forsearch: ["セイヒョー", "もも太郎", "金太郎"],
           imgUrl: require("@/assets/image/momotaro.png"),
+          number: 14,
         },
         {
           name: "ちゅーりっぷソフト",
@@ -214,6 +229,7 @@ export default {
           category: "その他",
           forsearch: ["ちゅーりっぷ"],
           imgUrl: require("@/assets/image/tyu-rip.png"),
+          number: 15,
         },
         {
           name: "越前塩あずきソフト",
@@ -224,6 +240,7 @@ export default {
           category: "和風",
           forsearch: "",
           imgUrl: require("@/assets/image/azuki.png"),
+          number: 16,
         },
         {
           name: "いかすみソフト",
@@ -234,6 +251,7 @@ export default {
           category: "和風",
           forsearch: ["イカ墨", "イカスミ"],
           imgUrl: require("@/assets/image/ikasumi.png"),
+          number: 17,
         },
         {
           name: "レンコンソフトクリーム",
@@ -244,6 +262,7 @@ export default {
           category: "ミルク",
           forsearch: ["レンコンソフト", "れんこん"],
           imgUrl: require("@/assets/image/renkon.png"),
+          number: 18,
         },
         {
           name: "ブルーシールアイス",
@@ -254,6 +273,7 @@ export default {
           category: "その他",
           forsearch: ["ブルーシール"],
           imgUrl: require("@/assets/image/blue.png"),
+          number: 19,
         },
       ],
       searchWord: "",
